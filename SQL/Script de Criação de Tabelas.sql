@@ -191,3 +191,22 @@ ALTER TABLE Empresa_Paciente ADD CONSTRAINT FKEmpresa_Pa963383 FOREIGN KEY (empc
 ALTER TABLE Empresa_Paciente ADD CONSTRAINT FKEmpresa_Pa37317 FOREIGN KEY (paccpf) REFERENCES Paciente (paccpf);
 ALTER TABLE Situacao_Paciente ADD CONSTRAINT FKSituacao_P977369 FOREIGN KEY (sitid) REFERENCES Situacao (sitid);
 ALTER TABLE Situacao_Paciente ADD CONSTRAINT FKSituacao_P144747 FOREIGN KEY (paccpf) REFERENCES Paciente (paccpf);
+
+
+
+
+--INSERT
+
+insert INTO Comorbidade (comdes) values ('Idade igual ou superior a 60 anos');
+insert INTO Comorbidade (comdes) values('Tabagismo');
+insert INTO Comorbidade (comdes) values('Obesidade');
+insert INTO Comorbidade (comdes) values('Miocardiopatias de diferentes etiologias');
+insert INTO Comorbidade (comdes) values('Hipertensão arterial');
+insert INTO Comorbidade (comdes) values('Pneumopatias graves ou descompensados');
+insert INTO Comorbidade (comdes) values('Imunodepressão e imunossupressão');
+insert INTO Comorbidade (comdes) values('Doenças renais crônicas em estágio avançado (graus 3, 4 e 5)');
+insert INTO Comorbidade (comdes) values('Diabetes melito, conforme juízo clínico');
+insert INTO Comorbidade (comdes) values('Doenças cromossômicas com estado de fragilidade imunológica');
+insert INTO Comorbidade (comdes) values('Neoplasia maligna (exceto câncer não melanótico de pele)');
+insert INTO Comorbidade (comdes) values('Algumas doenças hematológicas (incluindo anemia falciforme e talassemia)');
+insert INTO Comorbidade (comdes) values('Gestação');
