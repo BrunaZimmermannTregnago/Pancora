@@ -195,7 +195,7 @@ ALTER TABLE Situacao_Paciente ADD CONSTRAINT FKSituacao_P144747 FOREIGN KEY (pac
 
 
 
---INSERT
+--INSERT comorbidade
 
 insert INTO Comorbidade (comdes) values ('Idade igual ou superior a 60 anos');
 insert INTO Comorbidade (comdes) values('Tabagismo');
@@ -210,3 +210,10 @@ insert INTO Comorbidade (comdes) values('Doenças cromossômicas com estado de fra
 insert INTO Comorbidade (comdes) values('Neoplasia maligna (exceto câncer não melanótico de pele)');
 insert INTO Comorbidade (comdes) values('Algumas doenças hematológicas (incluindo anemia falciforme e talassemia)');
 insert INTO Comorbidade (comdes) values('Gestação');
+
+--insert nome vacinas
+
+insert INTO vacina (vacnom) values('CoronaVac');
+insert INTO vacina (vacnom) values('Pfizer');
+insert INTO vacina (vacnom) values('AstraZeneca/Oxford');
+insert into vacina (vacnom) values ('Johnson & Johnson');
