@@ -103,7 +103,7 @@ COMMENT ON COLUMN Paciente.pacpos IS 'Situação da contaminação do paciente, se e
 CREATE TABLE Sintoma (
   sinid  SERIAL NOT NULL, 
   sindes varchar(80) NOT NULL UNIQUE, 
-  CONSTRAINT Sintoma 
+  CONSTRAINT Sintoma_pk
     PRIMARY KEY (sinid));
 COMMENT ON TABLE Sintoma IS 'Cadastro do tipo do sintoma.';
 COMMENT ON COLUMN Sintoma.sinid IS 'Código de identificação do tipo do sintoma.';
@@ -167,8 +167,7 @@ CREATE TABLE Vacina_Paciente (
   vacdos   numeric(1, 0) NOT NULL, 
   vacid    int4 NOT NULL, 
   paccpf   numeric(11, 0) NOT NULL, 
-  PRIMARY KEY (vacpacid));
- 
+  PRIMARY KEY (vacpacid)); 
 COMMENT ON TABLE Vacina_Paciente IS 'Tabela de ligação entre Paciente e Vacina.';
 COMMENT ON COLUMN Vacina_Paciente.vacpacid IS 'Código de identificação.';
 COMMENT ON COLUMN Vacina_Paciente.vacdos IS 'Doses da vacina que o paciente tomou.';
@@ -180,7 +179,6 @@ ALTER TABLE Paciente ADD CONSTRAINT FKPaciente666930 FOREIGN KEY (cidid) REFEREN
 ALTER TABLE Empresa ADD CONSTRAINT FKEmpresa705567 FOREIGN KEY (cidid) REFERENCES Cidade (cidid);
 ALTER TABLE Sintoma_Paciente ADD CONSTRAINT FKSintoma_Pa94459 FOREIGN KEY (paccpf) REFERENCES Paciente (paccpf);
 ALTER TABLE Sintoma_Paciente ADD CONSTRAINT FKSintoma_Pa429408 FOREIGN KEY (sinid) REFERENCES Sintoma (sinid);
---erro ao gerar
 ALTER TABLE Vacina_Paciente ADD CONSTRAINT FKVacina_Pac537939 FOREIGN KEY (vacid) REFERENCES Vacina (vacid);
 ALTER TABLE Vacina_Paciente ADD CONSTRAINT FKVacina_Pac194476 FOREIGN KEY (paccpf) REFERENCES Paciente (paccpf);
 ALTER TABLE Comorbidade_Paciente ADD CONSTRAINT FKComorbidad637235 FOREIGN KEY (comid) REFERENCES Comorbidade (comid);
@@ -192,28 +190,5 @@ ALTER TABLE Empresa_Paciente ADD CONSTRAINT FKEmpresa_Pa37317 FOREIGN KEY (paccp
 ALTER TABLE Situacao_Paciente ADD CONSTRAINT FKSituacao_P977369 FOREIGN KEY (sitid) REFERENCES Situacao (sitid);
 ALTER TABLE Situacao_Paciente ADD CONSTRAINT FKSituacao_P144747 FOREIGN KEY (paccpf) REFERENCES Paciente (paccpf);
 
-
-
-
---INSERT comorbidade
-
-insert INTO Comorbidade (comdes) values ('Idade igual ou superior a 60 anos');
-insert INTO Comorbidade (comdes) values('Tabagismo');
-insert INTO Comorbidade (comdes) values('Obesidade');
-insert INTO Comorbidade (comdes) values('Miocardiopatias de diferentes etiologias');
-insert INTO Comorbidade (comdes) values('Hipertensão arterial');
-insert INTO Comorbidade (comdes) values('Pneumopatias graves ou descompensados');
-insert INTO Comorbidade (comdes) values('Imunodepressão e imunossupressão');
-insert INTO Comorbidade (comdes) values('Doenças renais crônicas em estágio avançado (graus 3, 4 e 5)');
-insert INTO Comorbidade (comdes) values('Diabetes melito, conforme juízo clínico');
-insert INTO Comorbidade (comdes) values('Doenças cromossômicas com estado de fragilidade imunológica');
-insert INTO Comorbidade (comdes) values('Neoplasia maligna (exceto câncer não melanótico de pele)');
-insert INTO Comorbidade (comdes) values('Algumas doenças hematológicas (incluindo anemia falciforme e talassemia)');
-insert INTO Comorbidade (comdes) values('Gestação');
-
---insert nome vacinas
-
-insert INTO vacina (vacnom) values('CoronaVac');
-insert INTO vacina (vacnom) values('Pfizer');
-insert INTO vacina (vacnom) values('AstraZeneca/Oxford');
-insert into vacina (vacnom) values ('Johnson & Johnson');
+CREATE SEQUENCE cid_serial;
+ALTER TABLE cidade ALTER COLUMN cidid SET DEFAULT nextval('cid_serial');
