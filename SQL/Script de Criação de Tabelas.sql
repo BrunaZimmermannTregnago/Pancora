@@ -190,5 +190,13 @@ ALTER TABLE Empresa_Paciente ADD CONSTRAINT FKEmpresa_Pa37317 FOREIGN KEY (paccp
 ALTER TABLE Situacao_Paciente ADD CONSTRAINT FKSituacao_P977369 FOREIGN KEY (sitid) REFERENCES Situacao (sitid);
 ALTER TABLE Situacao_Paciente ADD CONSTRAINT FKSituacao_P144747 FOREIGN KEY (paccpf) REFERENCES Paciente (paccpf);
 
+-- criando sequence e definindo set default para Cidade(cidid)
 CREATE SEQUENCE cid_serial;
 ALTER TABLE cidade ALTER COLUMN cidid SET DEFAULT nextval('cid_serial');
+
+-- excluindo as colunas paccpf e empcnpj da tabela tipo_usuario
+alter table tipo_usuario drop column paccpf;
+alter table tipo_usuario drop column empcnpj;
+
+-- criando coluna fk tipusuid na tabela paciente
+alter table paciente add column tipusuid int4 not null constraint pac_tipusuid_fk references Tipo_Usuario (tipusuid);

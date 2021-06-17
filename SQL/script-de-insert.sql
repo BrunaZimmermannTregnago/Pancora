@@ -37,6 +37,38 @@ insert into Sintoma (sindes) values
 ('Outros sintomas'),
 ('Oximetria ou Saturação de oxigênio por oxímetro - Indicar o percentual');
 
+-- Orientacao
+
+insert into orientacao (orides) values
+('Lave as mãos com água e sabão ou higienizador à base de álcool 70% para matar vírus que podem estar nas suas mãos.'),
+('O álcool líquido encontrado em supermercados e no comércio em geral, na graduação de até 54º GL (46,3º INPM), em embalagens usuais de 1 litro, não deve ser utilizado para higienização das mãos, por não ser efetivo para essa finalidade.'),
+('Mantenha pelo menos 1 metro de distância entre você e qualquer pessoa que esteja tossindo ou espirrando. Se você estiver muito próximo, poderá inspirar as gotículas pulverizadas pelo nariz ou boca da pessoa – inclusive do vírus, se ela estiver com covid.'),
+('Evite tocar nos olhos, nariz e boca. As mãos tocam muitas superfícies e podem ser infectadas por vírus. Uma vez contaminadas, as mãos podem transferir o vírus para os olhos, nariz ou boca. A partir daí, o vírus pode entrar no corpo da pessoa.'),
+('Certifique-se de que você e as pessoas ao seu redor seguem uma boa higiene respiratória. Isso significa cobrir a boca e o nariz com a parte interna do cotovelo ou lenço quando tossir ou espirrar (em seguida, descarte o lenço usado imediatamente).'),
+('Fique em casa se não se sentir bem. Se você tiver febre, tosse e dificuldade em respirar, procure atendimento médico. Siga as instruções da sua autoridade sanitária nacional ou local, ela terá as informações mais atualizadas sobre a situação em sua área.'),
+('Pessoas doentes devem adiar ou evitar viajar para as áreas afetadas por coronavírus. Áreas afetadas são países, áreas, províncias ou cidades onde há transmissão contínua – não áreas com apenas casos importados.'),
+('Sempre que retornar de uma viagem em áreas afetadas monitore seus sintomas por 14 dias e siga os protocolos nacionais do país receptor. Se ocorrerem sintomas, entre em contato com um médico e informe sobre o histórico de viagem e os sintomas.'),
+('Ao apresentar sintomas adote medidas rígidas de isolamento domiciliar e procure assistência médica caso se agravem, especialmente falta de ar. Se estiver em contato com alguém assim, siga as mesmas orientações e fique atento ao aparecimento de sintomas.'),
+('Utilize máscara quando estiver fora de sua residência, em espaços abertos ao público ou de uso coletivo. Dê preferência àquelas de tecido, confeccionadas de forma artesanal.'),
+('Quando precisar sair para fazer compras, envie apenas um único membro da sua família, a fim de evitar aglomerações no interior do estabelecimento.'),
+('Permaneça em sua casa sempre que possível.');
+
+-- Situacao
+
+insert into situacao (sitpac) values
+('Em isolamento'),
+('Recuperado'),
+('Em leito hospitalar'),
+('Tratamento na UTI'),
+('Não reagente'),
+('Positivado');
+
+-- Tipo_Usuario
+
+insert into tipo_usuario (tipusudes) values
+('Paciente'),
+('Administrador');
+
 -- Unidade Federativa
 
 insert into unidade_federativa (ufsignom) values
