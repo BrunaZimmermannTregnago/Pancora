@@ -200,3 +200,7 @@ alter table tipo_usuario drop column empcnpj;
 
 -- criando coluna fk tipusuid na tabela paciente
 alter table paciente add column tipusuid int4 not null constraint pac_tipusuid_fk references Tipo_Usuario (tipusuid);
+
+-- adicionando coluna pacsex na tabela paciente
+alter table paciente add column pacsex char(1) not null constraint pac_pacsex_ck check (pacsex in ('F','M','N','O'));
+comment on column paciente.pacsex is 'Sexo do paciente (F - Feminino, M - Masculino, N - Não-binário, O - Outro).';
