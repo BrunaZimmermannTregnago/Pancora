@@ -5682,23 +5682,23 @@ insert into bairro (bainom) values
 
 -- Paciente
 insert into paciente values 
-(70745065565,'Josivaldo Soares', '(49) 994857541', 'josivaldosoares@gmail.com', '2000-11-10', 96, 1.90, 'R. Aldoir Junior', '25', 89896000, 'V', 1,4540,1),
-(10745065425,'Aberlardo José Filho', '(49) 998835684', 'aberladojose@gmail.com', '1959-08-12', 86, 2.14, 'R. Marcilios Dias', '89', 89896000, 'F', 6,4540,1),
-(35745065425,'João Pedro da Silva', '(49) 988478580', 'joaopedro@gmail.com', '1979-11-12', 78.7, 1.50, 'R. V de Novembro', '78', 89874000, 'F', 7,4569,1),
-(18094506545,'Vitor Pereira', '(49) 984908754', 'vitorpereira@gmail.com', '1985-10-27', 76.2, 1.90, 'R. Oiapoc', '96', 89874000, 'V', 1,4569,1),
-(10745065589,'Paulo Martini', '(49) 973185462', 'paulomartini@gmail.com', '1965-07-26', 110.5, 2.00, 'R. Florianópolis', '15', 89874000, 'F', 4,4569,1),
-(15825065425,'Aline Souza', '(49) 918946288', 'alinesouza@gmail.com', '1954-01-14', 102.1, 1.40, 'R. La Salle', '48', 89874000, 'V', 5,4569,1),
-(65149681425,'Vanuza Sousa', '(49) 914003879', 'vanuzasousa@gmail.com', '1956-02-05', 72.1, 1.70, 'R. Carlos Dalmagro', '32', 89910000, 'F', 1,4491,1),
-(65165115685,'Eduarda Marcon', '(49) 979485021', 'eduardamarcon@gmail.com', '1958-03-13', 76.2, 2.20, 'R. Colúmbia', '45', 89910000, 'V', 2,4491,1),
-(61265156983,'Gabriela Bonno', '(49) 971455980', 'gabrielabonno@gmail.com', '19-01-04', 64.8, 1.92, 'R. Tiradentes', '96', 89910000, 'F', 4,4491,1),
-(99854894553,'Josué Vipi', '(49) 918760015', 'josuevipi@gmail.com', '1956-07-06', 114, 1.30, 'R. Santa Catarina', '185', 89870000, 'F', 1,4607,1),
-(98489526533,'Ana Solar', '(49) 910057864', 'anasolar@gmail.com', '1968-12-09', 81.5, 1.90, 'R. Guanabara', '145', 89870000, 'V', 3,4607,1),
-(89545388938,'Bianca Treviso', '(49) 908795432', 'biancatreviso@gmail.com', '1957-11-11', 150.3, 1.63, 'R. Elizabete', '269', 89870000, 'F', 2,4607,1),
-(89756522145,'Julia Magrão', '(49) 9417895623', 'juliamagrao@gmail.com', '1968-12-16', 53.1, 1.45, 'R. Itaberaba', '365', 89870000, 'F', 1,4607,1),
-(59687412314,'Bruna Pittol', '(49) 920005895', 'brunapittol@gmail.com', '1975-03-18', 67.7, 1.63, 'R. São Paulo', '485', 89801, 'V', 9,4479,1),
-(10785692216,'Edivalso Marte', '(49) 987945132', 'edivalsomarte@gmail.com', '1972-02-26', 95.1, 1.91, 'R. Dos Bandeirantes', '84', 89801, 'F', 8,4479,1),
-(98712668988,'Edson Leve', '(49) 978921543', 'edsonleve@gmail.com', '1973-04-29', 96.3, 1.73, 'R. Amazônas', '36', 89801, 'V', 2,4479,1),
-(51488148954,'José Silva', '(49) 987456851', 'josesilva@gmail.com', '1969-09-07', 63.4, 1.68, 'R. Itaberada', '68', 89801, 'V', 1,4479,2);
+(70745065565,'Josivaldo Soares', '(49) 994857541', 'josivaldosoares@gmail.com', '2000-11-10', 96, 1.90, 'R. Aldoir Junior', '25', 89896000, 'V', 1,4540,1,'M'),
+(10745065425,'Aberlardo José Filho', '(49) 998835684', 'aberladojose@gmail.com', '1959-08-12', 86, 2.14, 'R. Marcilios Dias', '89', 89896000, 'F', 6,4540,1,'M'),
+(35745065425,'João Pedro da Silva', '(49) 988478580', 'joaopedro@gmail.com', '1979-11-12', 78.7, 1.50, 'R. V de Novembro', '78', 89874000, 'F', 7,4569,1,'M'),
+(18094506545,'Vitor Pereira', '(49) 984908754', 'vitorpereira@gmail.com', '1985-10-27', 76.2, 1.90, 'R. Oiapoc', '96', 89874000, 'V', 1,4569,1,'M'),
+(10745065589,'Paulo Martini', '(49) 973185462', 'paulomartini@gmail.com', '1965-07-26', 110.5, 2.00, 'R. Florianópolis', '15', 89874000, 'F', 4,4569,1,'M'),
+(15825065425,'Aline Souza', '(49) 918946288', 'alinesouza@gmail.com', '1954-01-14', 102.1, 1.40, 'R. La Salle', '48', 89874000, 'V', 5,4569,1,'F'),
+(65149681425,'Vanuza Sousa', '(49) 914003879', 'vanuzasousa@gmail.com', '1956-02-05', 72.1, 1.70, 'R. Carlos Dalmagro', '32', 89910000, 'F', 1,4491,1,'F'),
+(65165115685,'Eduarda Marcon', '(49) 979485021', 'eduardamarcon@gmail.com', '1958-03-13', 76.2, 2.20, 'R. Colúmbia', '45', 89910000, 'V', 2,4491,1,'F'),
+(61265156983,'Gabriela Bonno', '(49) 971455980', 'gabrielabonno@gmail.com', '19-01-04', 64.8, 1.92, 'R. Tiradentes', '96', 89910000, 'F', 4,4491,1,'F'),
+(99854894553,'Josué Vipi', '(49) 918760015', 'josuevipi@gmail.com', '1956-07-06', 114, 1.30, 'R. Santa Catarina', '185', 89870000, 'F', 1,4607,1,'M'),
+(98489526533,'Ana Solar', '(49) 910057864', 'anasolar@gmail.com', '1968-12-09', 81.5, 1.90, 'R. Guanabara', '145', 89870000, 'V', 3,4607,1,'F'),
+(89545388938,'Bianca Treviso', '(49) 908795432', 'biancatreviso@gmail.com', '1957-11-11', 150.3, 1.63, 'R. Elizabete', '269', 89870000, 'F', 2,4607,1,'F'),
+(89756522145,'Julia Magrão', '(49) 9417895623', 'juliamagrao@gmail.com', '1968-12-16', 53.1, 1.45, 'R. Itaberaba', '365', 89870000, 'F', 1,4607,1,'F'),
+(59687412314,'Bruna Pittol', '(49) 920005895', 'brunapittol@gmail.com', '1975-03-18', 67.7, 1.63, 'R. São Paulo', '485', 89801, 'V', 9,4479,1,'F'),
+(10785692216,'Edivalso Marte', '(49) 987945132', 'edivalsomarte@gmail.com', '1972-02-26', 95.1, 1.91, 'R. Dos Bandeirantes', '84', 89801, 'F', 8,4479,1,'M'),
+(98712668988,'Edson Leve', '(49) 978921543', 'edsonleve@gmail.com', '1973-04-29', 96.3, 1.73, 'R. Amazônas', '36', 89801, 'V', 2,4479,1,'M'),
+(51488148954,'José Silva', '(49) 987456851', 'josesilva@gmail.com', '1969-09-07', 63.4, 1.68, 'R. Itaberada', '68', 89801, 'V', 1,4479,2,'M');
 
 --Sintoma Paciente
 insert into sintoma_paciente (sinpacdatini, sinpacgraint, sinpacdatfim, paccpf, sinid) values
