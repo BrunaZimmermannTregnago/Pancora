@@ -172,23 +172,23 @@ COMMENT ON TABLE Vacina_Paciente IS 'Tabela de ligação entre Paciente e Vacina.'
 COMMENT ON COLUMN Vacina_Paciente.vacpacid IS 'Código de identificação.';
 COMMENT ON COLUMN Vacina_Paciente.vacdos IS 'Doses da vacina que o paciente tomou.';
 
-ALTER TABLE Cidade ADD CONSTRAINT FKCidade208106 FOREIGN KEY (ufid) REFERENCES Unidade_Federativa (ufid);
-ALTER TABLE Empresa ADD CONSTRAINT FKEmpresa871276 FOREIGN KEY (baiid) REFERENCES Bairro (baiid);
-ALTER TABLE Paciente ADD CONSTRAINT FKPaciente832639 FOREIGN KEY (baiid) REFERENCES Bairro (baiid);
-ALTER TABLE Paciente ADD CONSTRAINT FKPaciente666930 FOREIGN KEY (cidid) REFERENCES Cidade (cidid);
-ALTER TABLE Empresa ADD CONSTRAINT FKEmpresa705567 FOREIGN KEY (cidid) REFERENCES Cidade (cidid);
-ALTER TABLE Sintoma_Paciente ADD CONSTRAINT FKSintoma_Pa94459 FOREIGN KEY (paccpf) REFERENCES Paciente (paccpf);
-ALTER TABLE Sintoma_Paciente ADD CONSTRAINT FKSintoma_Pa429408 FOREIGN KEY (sinid) REFERENCES Sintoma (sinid);
-ALTER TABLE Vacina_Paciente ADD CONSTRAINT FKVacina_Pac537939 FOREIGN KEY (vacid) REFERENCES Vacina (vacid);
-ALTER TABLE Vacina_Paciente ADD CONSTRAINT FKVacina_Pac194476 FOREIGN KEY (paccpf) REFERENCES Paciente (paccpf);
-ALTER TABLE Comorbidade_Paciente ADD CONSTRAINT FKComorbidad637235 FOREIGN KEY (comid) REFERENCES Comorbidade (comid);
-ALTER TABLE Comorbidade_Paciente ADD CONSTRAINT FKComorbidad472115 FOREIGN KEY (paccpf) REFERENCES Paciente (paccpf);
-ALTER TABLE Tipo_Usuario ADD CONSTRAINT FKTipo_Usuar136520 FOREIGN KEY (paccpf) REFERENCES Paciente (paccpf);
-ALTER TABLE Tipo_Usuario ADD CONSTRAINT FKTipo_Usuar834369 FOREIGN KEY (empcnpj) REFERENCES Empresa (empcnpj);
-ALTER TABLE Empresa_Paciente ADD CONSTRAINT FKEmpresa_Pa963383 FOREIGN KEY (empcnpj) REFERENCES Empresa (empcnpj);
-ALTER TABLE Empresa_Paciente ADD CONSTRAINT FKEmpresa_Pa37317 FOREIGN KEY (paccpf) REFERENCES Paciente (paccpf);
-ALTER TABLE Situacao_Paciente ADD CONSTRAINT FKSituacao_P977369 FOREIGN KEY (sitid) REFERENCES Situacao (sitid);
-ALTER TABLE Situacao_Paciente ADD CONSTRAINT FKSituacao_P144747 FOREIGN KEY (paccpf) REFERENCES Paciente (paccpf);
+ALTER TABLE Cidade ADD CONSTRAINT cid_ufid_fk FOREIGN KEY (ufid) REFERENCES Unidade_Federativa (ufid);
+ALTER TABLE Empresa ADD CONSTRAINT emp_baiid_fk FOREIGN KEY (baiid) REFERENCES Bairro (baiid);
+ALTER TABLE Paciente ADD CONSTRAINT pac_baiid_fk FOREIGN KEY (baiid) REFERENCES Bairro (baiid);
+ALTER TABLE Paciente ADD CONSTRAINT pac_cidid_fk FOREIGN KEY (cidid) REFERENCES Cidade (cidid);
+ALTER TABLE Empresa ADD CONSTRAINT emp_cidid_fk FOREIGN KEY (cidid) REFERENCES Cidade (cidid);
+ALTER TABLE Sintoma_Paciente ADD CONSTRAINT sinpac_paccpf_fk FOREIGN KEY (paccpf) REFERENCES Paciente (paccpf);
+ALTER TABLE Sintoma_Paciente ADD CONSTRAINT sinpac_sinid_fk FOREIGN KEY (sinid) REFERENCES Sintoma (sinid);
+ALTER TABLE Vacina_Paciente ADD CONSTRAINT vacpac_vacid_fk FOREIGN KEY (vacid) REFERENCES Vacina (vacid);
+ALTER TABLE Vacina_Paciente ADD CONSTRAINT vacpac_paccpf_fk FOREIGN KEY (paccpf) REFERENCES Paciente (paccpf);
+ALTER TABLE Comorbidade_Paciente ADD CONSTRAINT compac_comid_fk FOREIGN KEY (comid) REFERENCES Comorbidade (comid);
+ALTER TABLE Comorbidade_Paciente ADD CONSTRAINT compac_paccpf_fk FOREIGN KEY (paccpf) REFERENCES Paciente (paccpf);
+ALTER TABLE Tipo_Usuario ADD CONSTRAINT tipusu_paccpf_fk FOREIGN KEY (paccpf) REFERENCES Paciente (paccpf);
+ALTER TABLE Tipo_Usuario ADD CONSTRAINT tipusu_empcnpj_fk FOREIGN KEY (empcnpj) REFERENCES Empresa (empcnpj);
+ALTER TABLE Empresa_Paciente ADD CONSTRAINT emppac_empcnpj_fk FOREIGN KEY (empcnpj) REFERENCES Empresa (empcnpj);
+ALTER TABLE Empresa_Paciente ADD CONSTRAINT emppac_paccpf_fk FOREIGN KEY (paccpf) REFERENCES Paciente (paccpf);
+ALTER TABLE Situacao_Paciente ADD CONSTRAINT sitpac_sitid_fk FOREIGN KEY (sitid) REFERENCES Situacao (sitid);
+ALTER TABLE Situacao_Paciente ADD CONSTRAINT sitpac_paccpf_fk FOREIGN KEY (paccpf) REFERENCES Paciente (paccpf);
 
 -- criando sequence e definindo set default para Cidade(cidid)
 CREATE SEQUENCE cid_serial;
@@ -202,5 +202,5 @@ alter table tipo_usuario drop column empcnpj;
 alter table paciente add column tipusuid int4 not null constraint pac_tipusuid_fk references Tipo_Usuario (tipusuid);
 
 -- adicionando coluna pacsex na tabela paciente
-alter table paciente add column pacsex char(1) not null check (pacsex in ('F','M','N','O'));
+alter table paciente add column pacsex char(1) not null constraint pac_pacsex_ck check (pacsex in ('F','M','N','O'));
 comment on column paciente.pacsex is 'Sexo do paciente (F - Feminino, M - Masculino, N - Não-binário, O - Outro).';
