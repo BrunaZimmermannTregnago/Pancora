@@ -83,10 +83,13 @@ CREATE TABLE Paciente (
   pacendrua varchar(250) NOT NULL, 
   pacendnum varchar(15) NOT NULL, 
   paccep    int4 NOT NULL, 
-  pacpos    char(1) DEFAULT 'F' NOT NULL CHECK(pacpos in ('F','V') ) 		, 
+  pacpos    char(1) DEFAULT 'F' NOT NULL CHECK(pacpos in ('F','V') ), 
   baiid     int4 NOT NULL, 
   cidid     int4 NOT NULL, 
-  PRIMARY KEY (paccpf));
+  tipusuid  int4 NOT NULL constraint pac_tipusuid_fk references Tipo_Usuario (tipusuid),
+  pacsex    char(1) NOT NULL constraint pac_pacsex_ck check (pacsex in ('F','M','N','O')),
+ 
+PRIMARY KEY (paccpf));
 COMMENT ON TABLE Paciente IS 'Cadastro do paciente';
 COMMENT ON COLUMN Paciente.paccpf IS 'CPF do paciente';
 COMMENT ON COLUMN Paciente.pacnom IS 'Nome de paciente';
@@ -99,6 +102,7 @@ COMMENT ON COLUMN Paciente.pacendrua IS 'Rua do endereço do paciente';
 COMMENT ON COLUMN Paciente.pacendnum IS 'Número do endereço do paciente';
 COMMENT ON COLUMN Paciente.paccep IS 'CEP do paciente';
 COMMENT ON COLUMN Paciente.pacpos IS 'Situação da contaminação do paciente, se em algum momento já foi reagente.';
+COMMENT ON COLUMN Paciente.pacsex is 'Sexo do paciente (F - Feminino, M - Masculino, N - Não-binário, O - Outro).';
 
 CREATE TABLE Sintoma (
   sinid  SERIAL NOT NULL, 
@@ -142,8 +146,6 @@ COMMENT ON COLUMN Situacao_Paciente.sitpacid IS 'Código de identifcação';
 CREATE TABLE Tipo_Usuario (
   tipusuid  SERIAL NOT NULL, 
   tipusudes varchar(15) NOT NULL UNIQUE, 
-  paccpf    numeric(11, 0) NOT NULL, 
-  empcnpj   numeric(14, 0) NOT NULL, 
   PRIMARY KEY (tipusuid));
 COMMENT ON COLUMN Tipo_Usuario.tipusuid IS 'Código identificador do tipo do usuário.';
 COMMENT ON COLUMN Tipo_Usuario.tipusudes IS 'Descrição do tipo de usuário.';
@@ -194,13 +196,5 @@ ALTER TABLE Situacao_Paciente ADD CONSTRAINT sitpac_paccpf_fk FOREIGN KEY (paccp
 CREATE SEQUENCE cid_serial;
 ALTER TABLE cidade ALTER COLUMN cidid SET DEFAULT nextval('cid_serial');
 
--- excluindo as colunas paccpf e empcnpj da tabela tipo_usuario
-alter table tipo_usuario drop column paccpf;
-alter table tipo_usuario drop column empcnpj;
 
--- criando coluna fk tipusuid na tabela paciente
-alter table paciente add column tipusuid int4 not null constraint pac_tipusuid_fk references Tipo_Usuario (tipusuid);
 
--- adicionando coluna pacsex na tabela paciente
-alter table paciente add column pacsex char(1) not null constraint pac_pacsex_ck check (pacsex in ('F','M','N','O'));
-comment on column paciente.pacsex is 'Sexo do paciente (F - Feminino, M - Masculino, N - Não-binário, O - Outro).';
