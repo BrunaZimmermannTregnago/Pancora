@@ -139,9 +139,13 @@ CREATE TABLE Situacao_Paciente (
   sitpacid SERIAL NOT NULL, 
   sitid    int4 NOT NULL, 
   paccpf   numeric(11, 0) NOT NULL, 
+  sitpacdatini date NOT NULL,
+  sitpacdatfim date,
   PRIMARY KEY (sitpacid));
 COMMENT ON TABLE Situacao_Paciente IS 'Tabela de ligação entre Situacao e Paciente';
-COMMENT ON COLUMN Situacao_Paciente.sitpacid IS 'Código de identifcação';
+COMMENT ON COLUMN Situacao_Paciente.sitpacid IS 'Código de identificação';
+COMMENT ON COLUMN Situacao_Paciente.sitpacdatini IS 'Data de início da situação do paciente.';
+COMMENT ON COLUMN Situacao_Paciente.sitpacdatfim IS 'Data final da situação do paciente.';
 
 CREATE TABLE Tipo_Usuario (
   tipusuid  SERIAL NOT NULL, 

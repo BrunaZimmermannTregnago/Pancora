@@ -5834,3 +5834,12 @@ insert into situacao_paciente (sitid, paccpf) values
 (4,59687412314),
 (4,10785692216),
 (3,98712668988);
+
+-- Coluna sitpacdatini (situacao_paciente)
+update situacao_paciente set sitpacdatini = ('2021-03-25')
+where sitpacid in (1,3,5,7);
+update situacao_paciente set sitpacdatini = ('2020-08-25')
+where sitpacid in (2,9,11,12,13,14);
+update situacao_paciente set sitpacdatini = ('2020-10-03')
+where sitpacid in (10,4,6,8,15,15);
+
