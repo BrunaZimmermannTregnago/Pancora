@@ -4,7 +4,7 @@ CREATE TABLE Bairro (
   bainom varchar(250) NOT NULL, 
   PRIMARY KEY (baiid));
 COMMENT ON TABLE Bairro IS 'Cadastro do bairro da cidade.';
-COMMENT ON COLUMN Bairro.baiid IS 'Código de idetificação do bairro da cidade';
+COMMENT ON COLUMN Bairro.baiid IS 'Cï¿½digo de idetificaï¿½ï¿½o do bairro da cidade';
 COMMENT ON COLUMN Bairro.bainom IS 'Nome do bairro da cidade';
 
 CREATE TABLE Cidade (
@@ -12,24 +12,24 @@ CREATE TABLE Cidade (
   cidnom varchar(250) NOT NULL, 
   ufid   int4 NOT NULL, 
   PRIMARY KEY (cidid));
-COMMENT ON COLUMN Cidade.cidid IS 'Código de identificação da cidade';
+COMMENT ON COLUMN Cidade.cidid IS 'Cï¿½digo de identificaï¿½ï¿½o da cidade';
 COMMENT ON COLUMN Cidade.cidnom IS 'Nome da cidade';
 
 CREATE TABLE Comorbidade (
   comid  SERIAL NOT NULL, 
   comdes varchar(80) NOT NULL UNIQUE, 
   PRIMARY KEY (comid));
-COMMENT ON TABLE Comorbidade IS 'Histórico de Comorbidades';
-COMMENT ON COLUMN Comorbidade.comid IS 'Código de identificação do histórico de comorbidades do paciente.';
-COMMENT ON COLUMN Comorbidade.comdes IS 'Descrição da comorbidade.';
+COMMENT ON TABLE Comorbidade IS 'Histï¿½rico de Comorbidades';
+COMMENT ON COLUMN Comorbidade.comid IS 'Cï¿½digo de identificaï¿½ï¿½o do histï¿½rico de comorbidades do paciente.';
+COMMENT ON COLUMN Comorbidade.comdes IS 'Descriï¿½ï¿½o da comorbidade.';
 
 CREATE TABLE Comorbidade_Paciente (
   compacid SERIAL NOT NULL, 
   comid    int4 NOT NULL, 
   paccpf   numeric(11, 0) NOT NULL, 
   PRIMARY KEY (compacid));
-COMMENT ON TABLE Comorbidade_Paciente IS 'Tabela de ligação entre Comorbidade e Paciente';
-COMMENT ON COLUMN Comorbidade_Paciente.compacid IS 'Código de identificação';
+COMMENT ON TABLE Comorbidade_Paciente IS 'Tabela de ligaï¿½ï¿½o entre Comorbidade e Paciente';
+COMMENT ON COLUMN Comorbidade_Paciente.compacid IS 'Cï¿½digo de identificaï¿½ï¿½o';
 
 CREATE TABLE Empresa (
   empcnpj   numeric(14, 0) NOT NULL, 
@@ -46,13 +46,13 @@ CREATE TABLE Empresa (
   PRIMARY KEY (empcnpj));
 COMMENT ON TABLE Empresa IS 'Cadastro de empresas.';
 COMMENT ON COLUMN Empresa.empcnpj IS 'Cadastro do CNPJ da empresa.';
-COMMENT ON COLUMN Empresa.emprazsoc IS 'Razão social da empresa.';
+COMMENT ON COLUMN Empresa.emprazsoc IS 'Razï¿½o social da empresa.';
 COMMENT ON COLUMN Empresa.empnomfan IS 'Nome fantasia da empresa.';
 COMMENT ON COLUMN Empresa.emptel IS 'Telefone da empresa.';
 COMMENT ON COLUMN Empresa.empema IS 'Email da empresa.';
 COMMENT ON COLUMN Empresa.empramati IS 'Ramo de atividade da empresa.';
-COMMENT ON COLUMN Empresa.empendrua IS 'Rua do endereço da empresa';
-COMMENT ON COLUMN Empresa.empendnum IS 'Número do endereço da empresa';
+COMMENT ON COLUMN Empresa.empendrua IS 'Rua do endereï¿½o da empresa';
+COMMENT ON COLUMN Empresa.empendnum IS 'Nï¿½mero do endereï¿½o da empresa';
 COMMENT ON COLUMN Empresa.empcep IS 'CEP da empresa';
 
 CREATE TABLE Empresa_Paciente (
@@ -61,16 +61,16 @@ CREATE TABLE Empresa_Paciente (
   empcnpj   numeric(14, 0) NOT NULL, 
   paccpf    numeric(11, 0) NOT NULL, 
   PRIMARY KEY (emppacid));
-COMMENT ON TABLE Empresa_Paciente IS 'Tabela de ligação entre Empresa e Paciente.';
-COMMENT ON COLUMN Empresa_Paciente.emppacid IS 'Código de identificação da relação.';
-COMMENT ON COLUMN Empresa_Paciente.emppacfun IS 'Função desempenhada pelo paciente dentro empresa.';
+COMMENT ON TABLE Empresa_Paciente IS 'Tabela de ligaï¿½ï¿½o entre Empresa e Paciente.';
+COMMENT ON COLUMN Empresa_Paciente.emppacid IS 'Cï¿½digo de identificaï¿½ï¿½o da relaï¿½ï¿½o.';
+COMMENT ON COLUMN Empresa_Paciente.emppacfun IS 'Funï¿½ï¿½o desempenhada pelo paciente dentro empresa.';
 
 CREATE TABLE Orientacao (
   oricid SERIAL NOT NULL, 
   orides varchar(255) NOT NULL, 
   PRIMARY KEY (oricid));
-COMMENT ON COLUMN Orientacao.oricid IS 'Código de identificação da orientação.';
-COMMENT ON COLUMN Orientacao.orides IS 'Descrição da orientação.';
+COMMENT ON COLUMN Orientacao.oricid IS 'Cï¿½digo de identificaï¿½ï¿½o da orientaï¿½ï¿½o.';
+COMMENT ON COLUMN Orientacao.orides IS 'Descriï¿½ï¿½o da orientaï¿½ï¿½o.';
 
 CREATE TABLE Paciente (
   paccpf    numeric(11, 0) NOT NULL, 
@@ -82,8 +82,7 @@ CREATE TABLE Paciente (
   pacalt    numeric(3, 2) NOT NULL, 
   pacendrua varchar(250) NOT NULL, 
   pacendnum varchar(15) NOT NULL, 
-  paccep    int4 NOT NULL, 
-  pacpos    char(1) DEFAULT 'F' NOT NULL CHECK(pacpos in ('F','V') ), 
+  paccep    int4 NOT NULL,
   baiid     int4 NOT NULL, 
   cidid     int4 NOT NULL, 
   tipusuid  int4 NOT NULL constraint pac_tipusuid_fk references Tipo_Usuario (tipusuid),
@@ -98,11 +97,11 @@ COMMENT ON COLUMN Paciente.pacema IS 'Email do paciente';
 COMMENT ON COLUMN Paciente.pacdatnas IS 'Data de nascimento do paciente';
 COMMENT ON COLUMN Paciente.pacpes IS 'Peso do paciente';
 COMMENT ON COLUMN Paciente.pacalt IS 'Altura do paciente';
-COMMENT ON COLUMN Paciente.pacendrua IS 'Rua do endereço do paciente';
-COMMENT ON COLUMN Paciente.pacendnum IS 'Número do endereço do paciente';
+COMMENT ON COLUMN Paciente.pacendrua IS 'Rua do endereï¿½o do paciente';
+COMMENT ON COLUMN Paciente.pacendnum IS 'Nï¿½mero do endereï¿½o do paciente';
 COMMENT ON COLUMN Paciente.paccep IS 'CEP do paciente';
-COMMENT ON COLUMN Paciente.pacpos IS 'Situação da contaminação do paciente, se em algum momento já foi reagente.';
-COMMENT ON COLUMN Paciente.pacsex is 'Sexo do paciente (F - Feminino, M - Masculino, N - Não-binário, O - Outro).';
+COMMENT ON COLUMN Paciente.pacpos IS 'Situaï¿½ï¿½o da contaminaï¿½ï¿½o do paciente, se em algum momento jï¿½ foi reagente.';
+COMMENT ON COLUMN Paciente.pacsex is 'Sexo do paciente (F - Feminino, M - Masculino, N - Nï¿½o-binï¿½rio, O - Outro).';
 
 CREATE TABLE Sintoma (
   sinid  SERIAL NOT NULL, 
@@ -110,8 +109,8 @@ CREATE TABLE Sintoma (
   CONSTRAINT Sintoma_pk
     PRIMARY KEY (sinid));
 COMMENT ON TABLE Sintoma IS 'Cadastro do tipo do sintoma.';
-COMMENT ON COLUMN Sintoma.sinid IS 'Código de identificação do tipo do sintoma.';
-COMMENT ON COLUMN Sintoma.sindes IS 'Descrição do sintoma.';
+COMMENT ON COLUMN Sintoma.sinid IS 'Cï¿½digo de identificaï¿½ï¿½o do tipo do sintoma.';
+COMMENT ON COLUMN Sintoma.sindes IS 'Descriï¿½ï¿½o do sintoma.';
 
 CREATE TABLE Sintoma_Paciente (
   sintipid     SERIAL NOT NULL, 
@@ -121,8 +120,8 @@ CREATE TABLE Sintoma_Paciente (
   paccpf       numeric(11, 0) NOT NULL, 
   sinid        int4 NOT NULL, 
   PRIMARY KEY (sintipid));
-COMMENT ON COLUMN Sintoma_Paciente.sintipid IS 'Código de identificação dos sintomas.';
-COMMENT ON COLUMN Sintoma_Paciente.sinpacdatini IS 'Data do início do(s) sintoma(s).';
+COMMENT ON COLUMN Sintoma_Paciente.sintipid IS 'Cï¿½digo de identificaï¿½ï¿½o dos sintomas.';
+COMMENT ON COLUMN Sintoma_Paciente.sinpacdatini IS 'Data do inï¿½cio do(s) sintoma(s).';
 COMMENT ON COLUMN Sintoma_Paciente.sinpacgraint IS 'Grau de intensidade dos sintomas (P - Pouco, M - Moderado, C - Constante)';
 COMMENT ON COLUMN Sintoma_Paciente.sinpacdatfim IS 'Data do fim do(s) sintoma(s).';
 COMMENT ON COLUMN Sintoma_Paciente.paccpf IS 'CPF do paciente.';
@@ -131,9 +130,9 @@ CREATE TABLE Situacao (
   sitid  SERIAL NOT NULL, 
   sitpac varchar(20) NOT NULL UNIQUE, 
   PRIMARY KEY (sitid));
-COMMENT ON TABLE Situacao IS 'Cadastro da situação.';
-COMMENT ON COLUMN Situacao.sitid IS 'Código de identificação da situação do paciente.';
-COMMENT ON COLUMN Situacao.sitpac IS 'Situação do paciente. (Em isolamento, Recuperado, Em leito hospitalar, Tratamento na UTI, Não reagente)';
+COMMENT ON TABLE Situacao IS 'Cadastro da situaï¿½ï¿½o.';
+COMMENT ON COLUMN Situacao.sitid IS 'Cï¿½digo de identificaï¿½ï¿½o da situaï¿½ï¿½o do paciente.';
+COMMENT ON COLUMN Situacao.sitpac IS 'Situaï¿½ï¿½o do paciente. (Em isolamento, Recuperado, Em leito hospitalar, Tratamento na UTI, Nï¿½o reagente)';
 
 CREATE TABLE Situacao_Paciente (
   sitpacid SERIAL NOT NULL, 
@@ -142,31 +141,31 @@ CREATE TABLE Situacao_Paciente (
   sitpacdatini date NOT NULL,
   sitpacdatfim date,
   PRIMARY KEY (sitpacid));
-COMMENT ON TABLE Situacao_Paciente IS 'Tabela de ligação entre Situacao e Paciente';
-COMMENT ON COLUMN Situacao_Paciente.sitpacid IS 'Código de identificação';
-COMMENT ON COLUMN Situacao_Paciente.sitpacdatini IS 'Data de início da situação do paciente.';
-COMMENT ON COLUMN Situacao_Paciente.sitpacdatfim IS 'Data final da situação do paciente.';
+COMMENT ON TABLE Situacao_Paciente IS 'Tabela de ligaï¿½ï¿½o entre Situacao e Paciente';
+COMMENT ON COLUMN Situacao_Paciente.sitpacid IS 'Cï¿½digo de identificaï¿½ï¿½o';
+COMMENT ON COLUMN Situacao_Paciente.sitpacdatini IS 'Data de inï¿½cio da situaï¿½ï¿½o do paciente.';
+COMMENT ON COLUMN Situacao_Paciente.sitpacdatfim IS 'Data final da situaï¿½ï¿½o do paciente.';
 
 CREATE TABLE Tipo_Usuario (
   tipusuid  SERIAL NOT NULL, 
   tipusudes varchar(15) NOT NULL UNIQUE, 
   PRIMARY KEY (tipusuid));
-COMMENT ON COLUMN Tipo_Usuario.tipusuid IS 'Código identificador do tipo do usuário.';
-COMMENT ON COLUMN Tipo_Usuario.tipusudes IS 'Descrição do tipo de usuário.';
+COMMENT ON COLUMN Tipo_Usuario.tipusuid IS 'Cï¿½digo identificador do tipo do usuï¿½rio.';
+COMMENT ON COLUMN Tipo_Usuario.tipusudes IS 'Descriï¿½ï¿½o do tipo de usuï¿½rio.';
 
 CREATE TABLE Unidade_Federativa (
   ufid     SERIAL NOT NULL, 
   ufsignom varchar(2) NOT NULL UNIQUE, 
   PRIMARY KEY (ufid));
 COMMENT ON TABLE Unidade_Federativa IS 'Cadastro da Unidade Federativa.';
-COMMENT ON COLUMN Unidade_Federativa.ufid IS 'Código de identificação da Unidade Federativa';
+COMMENT ON COLUMN Unidade_Federativa.ufid IS 'Cï¿½digo de identificaï¿½ï¿½o da Unidade Federativa';
 COMMENT ON COLUMN Unidade_Federativa.ufsignom IS 'Sigla do nome da Unidade Federativa.';
 
 CREATE TABLE Vacina (
   vacid  SERIAL NOT NULL, 
   vacnom varchar(100) NOT NULL, 
   PRIMARY KEY (vacid));
-COMMENT ON COLUMN Vacina.vacnom IS 'Nome da vacina do laboratório';
+COMMENT ON COLUMN Vacina.vacnom IS 'Nome da vacina do laboratï¿½rio';
 
 CREATE TABLE Vacina_Paciente (
   vacpacid SERIAL NOT NULL, 
@@ -174,8 +173,8 @@ CREATE TABLE Vacina_Paciente (
   vacid    int4 NOT NULL, 
   paccpf   numeric(11, 0) NOT NULL, 
   PRIMARY KEY (vacpacid)); 
-COMMENT ON TABLE Vacina_Paciente IS 'Tabela de ligação entre Paciente e Vacina.';
-COMMENT ON COLUMN Vacina_Paciente.vacpacid IS 'Código de identificação.';
+COMMENT ON TABLE Vacina_Paciente IS 'Tabela de ligaï¿½ï¿½o entre Paciente e Vacina.';
+COMMENT ON COLUMN Vacina_Paciente.vacpacid IS 'Cï¿½digo de identificaï¿½ï¿½o.';
 COMMENT ON COLUMN Vacina_Paciente.vacdos IS 'Doses da vacina que o paciente tomou.';
 
 ALTER TABLE Cidade ADD CONSTRAINT cid_ufid_fk FOREIGN KEY (ufid) REFERENCES Unidade_Federativa (ufid);
