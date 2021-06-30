@@ -1,11 +1,11 @@
 -- view 1.
 
 create view vw_pacientes_febre_70_60_anos as
-SELECT pa.paccpf as CPF, pa.pacnom as nome from paciente pa
-INNER JOIN sintoma_paciente sp on pa.paccpf = sp.paccpf and sp.sinid = 1
+select pa.paccpf as CPF, pa.pacnom as nome from paciente pa
+inner join sintoma_paciente sp on pa.paccpf = sp.paccpf and sp.sinid = 1
 where pa.pacdatnas 
 between (current_date - interval '70 years') and (current_date - interval '60 years')
-ORDER BY pa.pacnom asc;
+order by pa.pacnom asc;
 
 -- view 2.
 
@@ -33,6 +33,6 @@ create view vw_idade_agosto_setembro_2020 as
 select count(p.paccpf) as positivados, ((current_date - p.pacdatnas)/365) as idade 
 from paciente p 
 inner join situacao_paciente spa on spa.paccpf = p.paccpf and spa.sitid = 6
-where spa.dat_ini between '2020-08-01' and '2020-10-31'
+where spa.sitpacdatini between '2020-08-01' and '2020-10-31'
 group by idade
 order by count(p.paccpf) desc;
