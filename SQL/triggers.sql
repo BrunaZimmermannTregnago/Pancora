@@ -43,36 +43,21 @@ execute procedure quantos_recuperados();
 
 update situacao_paciente set sitid = 6
 where sitpacid = 4;
+--------------------------------------------------------------------------------------------------------------------------------
 
---------------------------------------------------------------REVISAR toda_situacao()--------------------------------------------------------------
-
-create or replace function toda_situacao()
-returns trigger as 
-$body$
-declare 
-	cont int := 0;
-begin 
-	select count(sp.*) into cont from situacao_paciente sp
-	inner join situacao s on s.sitid = sp.sitid
-	group by s.sitpac;
-	for i in 1..6 loop
-		raise notice '% casos.', cont;
-	end loop;
-	return new;
-end
-$body$
-language plpgsql;
-
-create trigger toda_situcao_after_tg
-after insert 
-on situacao_paciente
+create or replace function funcionamento_trigger()
+	returns trigger as 
+	$body$
+	begin
+		raise notice '% - % - % - NEW(%) , OLD(%)', TG_RELNAME, TG_OP, TG_WHEN, new::text, old::text; 
+		return new;
+	end
+	$body$
+	language plpgsql;
+	
+-- CRIANDO A TRIGGER
+create trigger situacao_paciente_before_tg
+before insert or update or delete 
+on situacao_paciente -- tabela
 for each row 
-execute procedure toda_situacao();
-
-update situacao_paciente set sitid = 6
-where sitpacid = 4;
-
-delete from situacao_paciente where paccpf = 70745065565;
-
-insert into situacao_paciente (sitid, paccpf, sitpacdatini) values
-(1,70745065565,'2021-03-25');
+execute procedure funcionamento_trigger();
