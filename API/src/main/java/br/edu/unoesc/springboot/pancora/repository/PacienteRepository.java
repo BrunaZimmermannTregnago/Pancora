@@ -10,7 +10,7 @@ import java.util.List;
 
 public interface PacienteRepository extends JpaRepository<Paciente, BigDecimal> {
 
-    @Query(value = "select p from Paciente p where upper(trim(p.nome)) like %?1%")
+    @Query(value = "select p from Paciente p where pacnom like %JOSE%")
     List<Paciente> buscar(String nome);
 
 }

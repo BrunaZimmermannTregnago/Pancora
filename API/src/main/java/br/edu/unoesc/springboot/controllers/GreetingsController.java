@@ -45,7 +45,7 @@ public class GreetingsController {
     @ResponseStatus(HttpStatus.OK)
     @ResponseBody
     public ResponseEntity<List<Paciente>>buscar(){
-        List<Paciente> paciente = pacienteRepository.buscar("vfdju");
+        List<Paciente> paciente = pacienteRepository.buscar("jose");
         if(paciente != null){
             return new ResponseEntity<List<Paciente>>(paciente, HttpStatus.OK);
         }else{
