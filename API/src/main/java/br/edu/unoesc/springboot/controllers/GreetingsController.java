@@ -1,14 +1,14 @@
 package br.edu.unoesc.springboot.controllers;
 
+import br.edu.unoesc.springboot.pancora.entities.Paciente;
 import br.edu.unoesc.springboot.pancora.entities.Situacao;
+import br.edu.unoesc.springboot.pancora.repository.PacienteRepository;
 import br.edu.unoesc.springboot.pancora.repository.SituacaoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.http.ResponseEntity;
+import java.util.List;
 
 /**
  *
@@ -16,16 +16,17 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 public class GreetingsController {
+
     /**
      *
      * @param name the name to greet
      * @return greeting text
      */
-    @RequestMapping(value = "/{name}", method = RequestMethod.GET)
-    @ResponseStatus(HttpStatus.OK)
-    public String greetingText(@PathVariable String name) {
-        return "Hello " + name + "!";
-    }
+//    @RequestMapping(value = "/{name}", method = RequestMethod.GET)
+//    @ResponseStatus(HttpStatus.OK)
+//    public String greetingText(@PathVariable String name) {
+//        return "Hello " + name + "!";
+//    }
 
     @Autowired // injeção de dependência
     private SituacaoRepository situacaoRepository;
@@ -37,4 +38,24 @@ public class GreetingsController {
         situacaoRepository.save(novaSituacao);
         return "Gravado";
     }
+
+    @Autowired // injeção de dependência
+    private PacienteRepository pacienteRepository;
+    @RequestMapping(value = "/lista-pacientes", method = RequestMethod.GET)
+    @ResponseStatus(HttpStatus.OK)
+    @ResponseBody
+    public ResponseEntity<List<Paciente>>buscar(){
+        List<Paciente> paciente = pacienteRepository.buscar("vfdju");
+        if(paciente != null){
+            return new ResponseEntity<List<Paciente>>(paciente, HttpStatus.OK);
+        }else{
+            System.out.println("Não há dados.");
+        }
+    return null;
+    }
+
+//    @GetMapping("/teste-paciente")
+//    public String lista-paciente() {
+//        return "lista-paciente";
+//    }
 }
