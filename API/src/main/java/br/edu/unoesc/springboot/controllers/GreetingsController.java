@@ -45,17 +45,12 @@ public class GreetingsController {
     @ResponseStatus(HttpStatus.OK)
     @ResponseBody
     public ResponseEntity<List<Paciente>>buscar(){
-        List<Paciente> paciente = pacienteRepository.buscar("jose");
+        List<Paciente> paciente = pacienteRepository.buscar();
         if(paciente != null){
             return new ResponseEntity<List<Paciente>>(paciente, HttpStatus.OK);
         }else{
             System.out.println("Não há dados.");
+            return null;
         }
-    return null;
     }
-
-//    @GetMapping("/teste-paciente")
-//    public String lista-paciente() {
-//        return "lista-paciente";
-//    }
 }
