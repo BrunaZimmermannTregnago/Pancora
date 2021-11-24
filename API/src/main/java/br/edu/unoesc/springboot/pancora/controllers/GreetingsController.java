@@ -58,11 +58,12 @@ public class GreetingsController {
 
     @Autowired // injeção de dependência
     private SintomaPacienteRepository sintomaPacienteRepository;
-    @RequestMapping(value = "/salvar-sintomaPaciente, method = RequestMethod.GET)
+    @RequestMapping(value = "/salvar-sintomaPaciente/{cpf}/{idsintoma}", method = RequestMethod.GET)
     @ResponseStatus(HttpStatus.OK)
     @ResponseBody
-    public ResponseEntity<List<Paciente>>buscar(){
-        List<SintomaPaciente> sintomaPaciente = sintomaPacienteRepository.salvar(int cpf, int idsintoma);
-        return new ResponseEntity<List<SintomaPaciente>(sintomaPaciente, HttpStatus.OK);
+    public ResponseEntity<List<SintomaPaciente>>salvar(int cpf, int idsintoma){
+        List<SintomaPaciente> sintomaPaciente = SintomaPacienteRepository.salvar(cpf, idsintoma);
+            return new ResponseEntity<List<SintomaPaciente>>(sintomaPaciente, HttpStatus.OK);
+
     }
 }
