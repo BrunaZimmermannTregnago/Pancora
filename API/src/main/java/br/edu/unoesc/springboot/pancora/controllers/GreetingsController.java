@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.servlet.ModelAndView;
+
 import java.util.List;
 
 /**
@@ -27,16 +29,24 @@ public class GreetingsController {
 //    public String greetingText(@PathVariable String name) {
 //        return "Hello " + name + "!";
 //    }
+//
+//    @Autowired // injeção de dependência
+//    private SituacaoRepository situacaoRepository;
+//    @RequestMapping(value = "testeGravar/{situacao}", method = RequestMethod.GET)
+//    @ResponseStatus(HttpStatus.OK)
+//    public String testeGravar(@PathVariable String situacao){
+//        Situacao novaSituacao = new Situacao();
+//        novaSituacao.setSituacao(situacao);
+//        situacaoRepository.save(novaSituacao);
+//        return "Gravado";
+//    }
 
-    @Autowired // injeção de dependência
-    private SituacaoRepository situacaoRepository;
-    @RequestMapping(value = "testeGravar/{situacao}", method = RequestMethod.GET)
-    @ResponseStatus(HttpStatus.OK)
-    public String testeGravar(@PathVariable String situacao){
-        Situacao novaSituacao = new Situacao();
-        novaSituacao.setSituacao(situacao);
-        situacaoRepository.save(novaSituacao);
-        return "Gravado";
+
+    @GetMapping("/login")
+    public ModelAndView login() {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("login");
+        return modelAndView;
     }
 
     @Autowired // injeção de dependência
