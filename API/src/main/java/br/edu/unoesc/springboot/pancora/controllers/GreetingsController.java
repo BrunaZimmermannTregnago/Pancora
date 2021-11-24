@@ -1,8 +1,10 @@
 package br.edu.unoesc.springboot.pancora.controllers;
 
 import br.edu.unoesc.springboot.pancora.entities.Paciente;
+import br.edu.unoesc.springboot.pancora.entities.SintomaPaciente;
 import br.edu.unoesc.springboot.pancora.entities.Situacao;
 import br.edu.unoesc.springboot.pancora.repository.PacienteRepository;
+import br.edu.unoesc.springboot.pancora.repository.SintomaPacienteRepository;
 import br.edu.unoesc.springboot.pancora.repository.SituacaoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -62,5 +64,16 @@ public class GreetingsController {
             System.out.println("Não há dados.");
             return null;
         }
+    }
+
+    @Autowired // injeção de dependência
+    private SintomaPacienteRepository sintomaPacienteRepository;
+    @RequestMapping(value = "/salvar-sintomaPaciente/{cpf}/{idsintoma}", method = RequestMethod.GET)
+    @ResponseStatus(HttpStatus.OK)
+    @ResponseBody
+    public ResponseEntity<List<SintomaPaciente>>salvar(int cpf, int idsintoma){
+        List<SintomaPaciente> sintomaPaciente = SintomaPacienteRepository.salvar(cpf, idsintoma);
+            return new ResponseEntity<List<SintomaPaciente>>(sintomaPaciente, HttpStatus.OK);
+
     }
 }
