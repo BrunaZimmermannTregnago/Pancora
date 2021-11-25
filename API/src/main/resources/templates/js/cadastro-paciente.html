@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<<html>
+<form action= "addregistro.php" method="post" >
+    <table class="tabela_registro" width="40%" align="center" cellspacing="5" cellpadding="8">
+        <tr align="center">
+            <td><label for="name">Nome</label></td>
+            <td><label for="idade">Idade</label></td>
+        </tr>
+
+        <tr align="center">
+            <td><input type="text" class="form-control" name="nome" placeholder="Nome" required></td>
+            <td><input type="numeric" class="form-control" name="idade" placeholder="Idade" required ></td>
+        </tr>
+        <tr align="center">
+            <td><label for="cidade">Cidade</label></td>
+            <td><label for="uf">Estado da cidade</label></td>
+        </tr>
+
+        <tr align="center">
+            <td><input type="text" class="form-control" name="situacao" placeholder="Situação"  required></td>
+            <td><input type="text" class="form-control" placeholder="Distrito da cidade" name="uf" required></td>
+        </tr>
+        <tr align="center">
+            <td><label for="sexo">Sexo</label></td>
+        </tr>
+
+        <tr align="center">
+            <td><input type="radio" name="sexo" value="Masculino">Masculino</label>
+                <input type="radio" name="sexo" value="Feminino">Feminino</label>
+            </td>
+        <tr>
+            <td><button type="submit" class="btn btn-primary"><i class="fa fa-plus"></i> Cadastrar</button>
+                <button class="btn btn-primary" href="index.php"><i class="fa fa-plus"></i> Voltar</button></td>
+        </tr>
+    </table>
+</form>
+</html>
+</body>
+</html>
