@@ -1,13 +1,18 @@
 package br.edu.unoesc.springboot.pancora.controllers;
 
+import br.edu.unoesc.springboot.pancora.appuser.AppUser;
+import br.edu.unoesc.springboot.pancora.appuser.AppUserService;
 import br.edu.unoesc.springboot.pancora.entities.Paciente;
 import br.edu.unoesc.springboot.pancora.entities.SintomaPaciente;
 import br.edu.unoesc.springboot.pancora.entities.Situacao;
+import br.edu.unoesc.springboot.pancora.registration.RegistrationRequest;
+import br.edu.unoesc.springboot.pancora.registration.RegistrationService;
 import br.edu.unoesc.springboot.pancora.repository.PacienteRepository;
 import br.edu.unoesc.springboot.pancora.repository.SintomaPacienteRepository;
 import br.edu.unoesc.springboot.pancora.repository.SituacaoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.servlet.ModelAndView;
@@ -26,30 +31,6 @@ public class GreetingsController {
      * @param name the name to greet
      * @return greeting text
      */
-//    @RequestMapping(value = "/{name}", method = RequestMethod.GET)
-//    @ResponseStatus(HttpStatus.OK)
-//    public String greetingText(@PathVariable String name) {
-//        return "Hello " + name + "!";
-//    }
-//
-//    @Autowired // injeção de dependência
-//    private SituacaoRepository situacaoRepository;
-//    @RequestMapping(value = "testeGravar/{situacao}", method = RequestMethod.GET)
-//    @ResponseStatus(HttpStatus.OK)
-//    public String testeGravar(@PathVariable String situacao){
-//        Situacao novaSituacao = new Situacao();
-//        novaSituacao.setSituacao(situacao);
-//        situacaoRepository.save(novaSituacao);
-//        return "Gravado";
-//    }
-
-
-    @GetMapping("/login")
-    public ModelAndView login() {
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("login");
-        return modelAndView;
-    }
 
     @Autowired // injeção de dependência
     private PacienteRepository pacienteRepository;

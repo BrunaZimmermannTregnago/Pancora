@@ -1,22 +1,31 @@
 <!DOCTYPE html>
-<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org" xmlns:tiles="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Login</title>
     <link rel="stylesheet/less" type="text/css" href="css/login_style.less">
+    <title tiles:fragment="title">Messages : Create</title>
 </head>
 <body>
+
 <div class="wrapper">
-    <div class="container">
+    <div class="container" tiles:fragment="content">
         <h1>Pancora</h1>
-
-        <form class="form">
-            <input type="text" placeholder="Email">
-            <input type="password" placeholder="Senha">
-            <button type="submit" id="login-button">Login</button>
-        </form>
-
+            <form class="form" name="f" th:action="@{/login}" method="post">
+                <fieldset>
+                    <legend>Por favor, login</legend>
+                    <div th:if="${param.error}" class="alert alert-error">
+                        Email ou senha inválido.
+                    </div>
+                    <div th:if="${param.logout}" class="alert alert-success">
+                        Você foi desconectado.
+                    </div>
+                    <input type="text" id="username" name="username" placeholder="Email">
+                    <input type="password" id="password" name="password" placeholder="Senha">
+                    <button type="submit" id="login-button">Login</button>
+                </fieldset>
+            </form>
         <p >Não possui cadastro? <a href="/sign-up" style="text-decoration:none" ><font class="sign-up" color="white">Cadastrar-se</font></a> </p>
 
     </div>
@@ -35,5 +44,6 @@
     </ul>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/less@4.1.1" ></script>
+<script src="js/login.js"></script>
 </body>
 </html>
