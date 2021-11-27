@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<<html>
+<form action= "addregistro.php" method="post" >
+    <table class="tabela_registro" width="40%" align="center" cellspacing="5" cellpadding="8">
+        <tr align="center">
+            <td><label for="rs">Razao Social</label></td>
+            <td><label for="Fant">Fantasia</label></td>
+            <td><label for="CNPJ">CNPJ</label></td>
+        </tr>
+
+        <tr align="center">
+            <td><input type="text" class="form-control" name="rs" placeholder="Razao Social" required></td>
+            <td><input type="text" class="form-control" name="fantasia" placeholder="Fantasia" required ></td>s
+            <td><input type="numeric" class="form-control" name="CNPJ" placeholder="CPNJ" required></td>
+
+        <tr align="center">
+            <td><label for="cidade">Cidade</label></td>
+            <td><label for="uf">Estado </label></td>
+        </tr>
+
+        <tr align="center">
+            <td><input type="text" class="form-control" name="cidade" placeholder="Cidade"  required></td>
+            <td><input type="text" class="form-control" placeholder="UF" name="Estado" required></td>
+        </tr>
+        <tr align="center">
+            <td><label for="name">Endreço</label></td>
+            <td><label for="ramo">Ramo</label></td>
+        </tr>
+
+        <tr align="center">
+            <td><input type="text" class="form-control" name="nome" placeholder="Endereço" required></td>
+            <td><input type="text" class="form-control" name="ramo" placeholder="Ramo" required ></td>
+        </tr>
+        <tr align="center">
+            <td><label for="name">E-mail</label></td>
+            <td><label for="ramo">Telefone</label></td>
+        </tr>
+
+        <tr align="center">
+            <td><input type="text" class="form-control" name="e-mail" placeholder="E-mail" required></td>
+            <td><input type="numeric" class="form-control" name="telefone" placeholder="Telefone" required ></td>
+        </tr>
+
+        </tr>
+
+        <tr>
+            <td><button type="submit" class="btn btn-primary"><i class="fa fa-plus"></i> Cadastrar</button>
+                <button class="btn btn-primary" href="index.php"><i class="fa fa-plus"></i> Voltar</button></td>
+        </tr>
+    </table>
+</form>
+</html>
+</body>
+</html>
