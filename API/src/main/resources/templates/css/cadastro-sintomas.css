@@ -1,0 +1,10 @@
+footer {
+    margin: auto;
+    width: 100%;
+    bottom: 0;
+    position: fixed;
+}
+
+container {
+    text-align: center;
+}

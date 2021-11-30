@@ -1,33 +1,22 @@
 <!DOCTYPE html>
-<html lang="pt-br" xmlns:th="http://www.thymeleaf.org" xmlns:tiles="http://www.thymeleaf.org">
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Login</title>
     <link rel="stylesheet/less" type="text/css" href="css/style.less">
-    <title tiles:fragment="title">Messages : Create</title>
 </head>
 <body>
 
 <div class="wrapper">
-    <div class="container" tiles:fragment="content">
+    <div class="container">
         <h1>Pancora</h1>
             <form class="form" name="f" th:action="@{/login}" method="post">
-                <fieldset>
-                    <legend>Por favor, login</legend>
-                    <div th:if="${param.error}" class="alert alert-error">
-                        Email ou senha inválido.
-                    </div>
-                    <div th:if="${param.logout}" class="alert alert-success">
-                        Você foi desconectado.
-                    </div>
-                    <input type="text" id="username" name="username" placeholder="Email">
-                    <input type="password" id="password" name="password" placeholder="Senha">
-                    <button type="submit" id="login-button">Login</button>
-                </fieldset>
+                <input type="text" id="username" name="username" placeholder="Email">
+                <input type="password" id="password" name="password" placeholder="Senha">
+                <button type="submit" id="login-button">Login</button>
             </form>
-        <p >Não possui cadastro? <a href="/register" style="text-decoration:none" ><font class="sign-up" color="white">Cadastrar-se</font></a> </p>
-
+        <p>Não possui cadastro? <a href="/registration" style="text-decoration:none"><font class="sign-up" color="white">Cadastrar-se</font></a> </p>
     </div>
 
     <ul class="bg-bubbles">

@@ -10,15 +10,19 @@ import java.io.Serializable;
 })
 @Entity(name = "Unidade_Federativa")
 @NoArgsConstructor
-@AllArgsConstructor
-@ToString
+@EqualsAndHashCode
+@Getter
 public class UnidadeFederativa implements Serializable {
     private static final long serialVersionUID = 190039050334954986L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ufid", nullable = false)
-    @Getter private Integer id;
+    private Integer id;
 
     @Column(name = "ufsignom", nullable = false, length = 2)
-    @Getter @Setter private String nomeSigla;
+    @Setter private String nomeSigla;
+
+    public UnidadeFederativa(String nomeSigla) {
+        this.nomeSigla = nomeSigla;
+    }
 }

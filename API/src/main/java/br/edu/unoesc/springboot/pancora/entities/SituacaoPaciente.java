@@ -9,26 +9,33 @@ import java.time.LocalDate;
 @Table(name = "situacao_paciente")
 @Entity(name = "Situacao_Paciente")
 @NoArgsConstructor
-@AllArgsConstructor
-@ToString
+@EqualsAndHashCode
+@Getter
 public class SituacaoPaciente implements Serializable {
     private static final long serialVersionUID = 65672102956723559L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "sitpacid", nullable = false)
-    @Getter private Integer id;
+    private Integer id;
 
     @Column(name = "sitpacdatfim")
-    @Getter @Setter private LocalDate dataFinal;
+    @Setter private LocalDate dataFinal;
 
     @Column(name = "sitpacdatini", nullable = false)
-    @Getter @Setter private LocalDate dataInicio;
+    @Setter private LocalDate dataInicio;
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "paccpf", nullable = false)
-    @Getter @Setter private Paciente cpf;
+    @Setter private Paciente cpf;
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "sitid", nullable = false)
-    @Getter @Setter private Situacao situacaoId;
+    @Setter private Situacao situacaoId;
+
+    public SituacaoPaciente(LocalDate dataFinal, LocalDate dataInicio, Paciente cpf, Situacao situacaoId) {
+        this.dataFinal = dataFinal;
+        this.dataInicio = dataInicio;
+        this.cpf = cpf;
+        this.situacaoId = situacaoId;
+    }
 }

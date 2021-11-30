@@ -8,15 +8,19 @@ import java.io.Serializable;
 @Table(name = "bairro")
 @Entity(name = "Bairro")
 @NoArgsConstructor
-@AllArgsConstructor
-@ToString
+@EqualsAndHashCode
+@Getter
 public class Bairro implements Serializable {
     private static final long serialVersionUID = -7468949067666584343L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "baiid", nullable = false)
-    @Getter private Integer id;
+    private Integer id;
 
     @Column(name = "bainom", nullable = false, length = 250)
-    @Getter @Setter private String nome;
+    @Setter private String nome;
+
+    public Bairro(String nome) {
+        this.nome = nome;
+    }
 }

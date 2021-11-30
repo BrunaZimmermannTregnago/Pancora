@@ -9,23 +9,29 @@ import java.math.BigDecimal;
 @Table(name = "vacina_paciente")
 @Entity(name = "Vacina_Paciente")
 @NoArgsConstructor
-@AllArgsConstructor
-@ToString
+@EqualsAndHashCode
+@Getter
 public class VacinaPaciente implements Serializable {
     private static final long serialVersionUID = 6869011545160176814L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "vacpacid", nullable = false)
-    @Getter private Integer id;
+    private Integer id;
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "paccpf", nullable = false)
-    @Getter @Setter private Paciente cpf;
+    @Setter private Paciente cpf;
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "vacid", nullable = false)
-    @Getter @Setter private Vacina vacinaId;
+    @Setter private Vacina vacinaId;
 
     @Column(name = "vacdos", nullable = false, precision = 1)
-    @Getter @Setter private BigDecimal dose;
+    @Setter private BigDecimal dose;
+
+    public VacinaPaciente(Paciente cpf, Vacina vacinaId, BigDecimal dose) {
+        this.cpf = cpf;
+        this.vacinaId = vacinaId;
+        this.dose = dose;
+    }
 }

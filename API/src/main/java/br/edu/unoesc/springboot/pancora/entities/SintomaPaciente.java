@@ -9,29 +9,37 @@ import java.time.LocalDate;
 @Table(name = "sintoma_paciente")
 @Entity(name = "Sintoma_Paciente")
 @NoArgsConstructor
-@AllArgsConstructor
-@ToString
+@EqualsAndHashCode
+@Getter
 public class SintomaPaciente implements Serializable {
     private static final long serialVersionUID = 4315809461473902931L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "sintipid", nullable = false)
-    @Getter private Integer id;
+    private Integer id;
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "sinid", nullable = false)
-    @Getter @Setter private Sintoma sintomaId;
+    @Setter private Sintoma sintomaId;
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "paccpf", nullable = false)
-    @Getter @Setter private Paciente cpf;
+    @Setter private Paciente cpf;
 
     @Column(name = "sinpacdatfim")
-    @Getter @Setter private LocalDate dataFinal;
+    @Setter private LocalDate dataFinal;
 
     @Column(name = "sinpacgraint", nullable = false, length = 50)
-    @Getter @Setter private String grauIntesidade;
+    @Setter private String grauIntesidade;
 
     @Column(name = "sinpacdatini", nullable = false)
-    @Getter @Setter private LocalDate dataInicio;
+    @Setter private LocalDate dataInicio;
+
+    public SintomaPaciente(Sintoma sintomaId, Paciente cpf, LocalDate dataFinal, String grauIntesidade, LocalDate dataInicio) {
+        this.sintomaId = sintomaId;
+        this.cpf = cpf;
+        this.dataFinal = dataFinal;
+        this.grauIntesidade = grauIntesidade;
+        this.dataInicio = dataInicio;
+    }
 }

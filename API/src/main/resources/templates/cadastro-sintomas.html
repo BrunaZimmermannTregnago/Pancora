@@ -1,50 +1,103 @@
 <!DOCTYPE html>
+<html lang="pt-br">
 <head>
-    <meta charset="UTF-8" />
-    <title>Cadastro de Sintomas</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Cadastro de sintoma</title>
+    <link rel="stylesheet" href="css/cadastro_style.css">
+    <link rel="stylesheet" href="css/cadastro-sintomas.css">
 </head>
-<body>
-<div class="container" >
-    <a class="links" id="paracadastropaciente"></a>
-
-    <div class="content">
-
-        <!--CADASTRO DE SINTOMAS-->
-        <div id="cadastro">
-            <form method="post" action="">
-                <h1>Cadastro Sintomas</h1>
-
-                <p>
-                    <label> Sintoma:</label>
-                    <select name="select">
-                        <option value="1">Febre</option>
-                        <option value="2">Espirros e Secreção Nasal</option>
-                        <option value="3">Tosse Seca</option>
-                        <option value="4">Dor no Corpo</option>
-                        <option value="5">Dor de Cabeça</option>
-                        <option value="6">Dor ou Irritação na Garganta</option>
-                        <option value="7">Dificuldade Respiratória</option>
-                        <option value="8">Diarreia</option>
-                        <option value="9">Perda de paladar e/ou olfato</option>
-                        <option value="10">Outros sintomas</option>
-                        <option value="11">Oximetria ou Saturação de oxigênio por Oxímetro Menor de 80</option>
-                    </select>
-                </p>
-
-                <p>
-                    <input class="btn btn-success" type='button' id='incluir' value='Salvar' onclick='btn_add();' />
-                </p>
-                <script>function btn_save() {
-                    var resposta = confirm("Deseja salvar o registro?");
-
-                    if (resposta === true) {
-
-                    }
-
-                    }</script>
-            </form>
+<header>
+    <nav class="navbar">
+        <a href="/" class="nav-logo">Pancora</a>
+        <ul class="nav-menu">
+            <li class="nav-item">
+                <a href="/cadastro-paciente" class="nav-link">Cadastro de paciente</a>
+            </li>
+            <li class="nav-item">
+                <a href="/cadastro-empresa" class="nav-link">Cadastro de empresa</a>
+            </li>
+            <li class="nav-item">
+                <a href="/cadastro-sintomas" class="nav-link">Cadastro de sintoma</a>
+            </li>
+            <li class="nav-item">
+                <a href="/lista-pacientes" class="nav-link">Quadro de Pacientes</a>
+            </li>
+            <li class="nav-item">
+                <a href="/usuario" class="nav-link">Usuário</a>
+            </li>
+        </ul>
+        <div class="hamburger">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
         </div>
-    </div>
+    </nav>
+</header>
+<body>
+<div class="container">
+
+    <h1>Cadastro de Sintomas</h1>
+
+    <section class="form-section">
+        <form class="form">
+            <div class="field">
+                <label class="label" for="sintoma">Sintoma</label>
+                <select class="input" id="sintoma" name="sintoma">
+                    <option value="1">Clique para selecionar</option>
+                    <option value="1">Febre</option>
+                    <option value="2">Espirros e Secreção Nasal</option>
+                    <option value="3">Tosse Seca</option>
+                    <option value="4">Dor no Corpo</option>
+                    <option value="5">Dor de Cabeça</option>
+                    <option value="6">Dor ou Irritação na Garganta</option>
+                    <option value="7">Dificuldade Respiratória</option>
+                    <option value="8">Diarreia</option>
+                    <option value="9">Perda de paladar e/ou olfato</option>
+                    <option value="10">Outros sintomas</option>
+                    <option value="11">Oximetria ou Saturação de oxigênio por Oxímetro Menor de 80</option>
+                </select>
+            </div>
+            <div class="frame">
+                <button class="btn" id="cadastro-button" onclick="cadastrarSintoma()">Cadastrar</button>
+                <a id="voltar-button" href="/" class="btn">
+                    Voltar
+                </a>
+            </div>
+        </form>
+    </section>
 </div>
+<canvas class="background"></canvas>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/particlesjs/2.2.2/particles.min.js"></script>
+<script>
+    var particles = Particles.init({
+	selector: '.background',
+  color: ['#4DCCC6', '#404B69', '#DBEDF3'],
+  connectParticles: true
+});
+</script>
+<script
+        src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+        crossorigin="anonymous">
+</script>
+<script>
+    function cadastrarSintoma() {
+    var resposta = confirm("Deseja salvar o registro?");
+
+    if (resposta === true) {
+
+    }
+}
+</script>
 </body>
+<footer className="footer mt-auto py-3 bg-dark">
+    <div className="footer container">
+        <p className="text-light">App desenvolvido por <a class="link-github" href="https://github.com/Ana-Epping" target="_blank" rel="noreferrer">Ana Luiza Epping</a>,
+            <a class="link-github" href="https://github.com/BrunaZimmermannTregnago" target="_blank" rel="noreferrer">Bruna Zimmermann Tregnago</a>,
+            <a class="link-github" href="https://github.com/evelynperondi" target="_blank" rel="noreferrer">Évelyn Perondi Filimberti</a> e
+            <a class="link-github" href="https://github.com/isadoragbocalon" target="_blank" rel="noreferrer">Isadora Gambatto Bocalon</a></p>
+        <p className="text-light"><a class="link-unoesc" href="https://www.unoesc.edu.br/" target="_blank" rel="noreferrer"><strong>Ciência da Computação - UNOESC SMO</strong></a><br/>
+    </div>
+</footer>
 </html>

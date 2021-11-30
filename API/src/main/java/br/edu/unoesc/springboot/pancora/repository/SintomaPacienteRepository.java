@@ -14,5 +14,5 @@ public interface SintomaPacienteRepository extends JpaRepository<SintomaPaciente
     static List<SintomaPaciente> salvar(int cpf, int idsintoma){
         return null;
 
-    };
+    }
 }

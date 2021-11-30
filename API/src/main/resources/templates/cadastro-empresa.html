@@ -1,55 +1,169 @@
 <!DOCTYPE html>
 <html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
-<<html>
-<form action= "addregistro.php" method="post" >
-    <table class="tabela_registro" width="40%" align="center" cellspacing="5" cellpadding="8">
-        <tr align="center">
-            <td><label for="rs">Razao Social</label></td>
-            <td><label for="Fant">Fantasia</label></td>
-            <td><label for="CNPJ">CNPJ</label></td>
-        </tr>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Cadastro de empresa</title>
+    <link rel="stylesheet" href="css/cadastro_style.css">
+</head>
+<header>
+    <nav class="navbar">
+        <a href="/" class="nav-logo">Pancora</a>
+        <ul class="nav-menu">
+            <li class="nav-item">
+                <a href="/cadastro-paciente" class="nav-link">Cadastro de paciente</a>
+            </li>
+            <li class="nav-item">
+                <a href="/cadastro-empresa" class="nav-link">Cadastro de empresa</a>
+            </li>
+            <li class="nav-item">
+                <a href="/cadastro-sintomas" class="nav-link">Cadastro de sintoma</a>
+            </li>
+            <li class="nav-item">
+                <a href="/lista-pacientes" class="nav-link">Quadro de Pacientes</a>
+            </li>
+            <li class="nav-item">
+                <a href="/usuario" class="nav-link">Usuário</a>
+            </li>
+        </ul>
+        <div class="hamburger">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+    </nav>
+</header>
+<body>
+<div class="container">
 
-        <tr align="center">
-            <td><input type="text" class="form-control" name="rs" placeholder="Razao Social" required></td>
-            <td><input type="text" class="form-control" name="fantasia" placeholder="Fantasia" required ></td>s
-            <td><input type="numeric" class="form-control" name="CNPJ" placeholder="CPNJ" required></td>
+    <h1>Cadastro de empresa</h1>
 
-        <tr align="center">
-            <td><label for="cidade">Cidade</label></td>
-            <td><label for="uf">Estado </label></td>
-        </tr>
+    <section class="form-section">
+        <form class="form" onsubmit="return false">
 
-        <tr align="center">
-            <td><input type="text" class="form-control" name="cidade" placeholder="Cidade"  required></td>
-            <td><input type="text" class="form-control" placeholder="UF" name="Estado" required></td>
-        </tr>
-        <tr align="center">
-            <td><label for="name">Endreço</label></td>
-            <td><label for="ramo">Ramo</label></td>
-        </tr>
+            <div class="field-wrap">
+                <div class="field">
+                    <label class="label" for="razao-social">Razão Social</label>
+                    <input class="input" id="razao-social" name="razaoSocial" type="text" required>
+                </div>
+            </div>
 
-        <tr align="center">
-            <td><input type="text" class="form-control" name="nome" placeholder="Endereço" required></td>
-            <td><input type="text" class="form-control" name="ramo" placeholder="Ramo" required ></td>
-        </tr>
-        <tr align="center">
-            <td><label for="name">E-mail</label></td>
-            <td><label for="ramo">Telefone</label></td>
-        </tr>
+            <div class="field-wrap">
+                <div class="field">
+                    <label class="label" for="nome-fantasia">Nome fantasia</label>
+                    <input class="input" id="nome-fantasia" name="nomeFantasia" type="text" required>
+                </div>
+            </div>
 
-        <tr align="center">
-            <td><input type="text" class="form-control" name="e-mail" placeholder="E-mail" required></td>
-            <td><input type="numeric" class="form-control" name="telefone" placeholder="Telefone" required ></td>
-        </tr>
+            <div class="field-wrap">
+                <div class="field">
+                    <label class="label" for="ramo">Ramo de Atuação</label>
+                    <input class="input" id="ramo" name="ramo" type="text" required>
+                </div>
+            </div>
 
-        </tr>
+            <div class="field-wrap">
+                <div class="field">
+                    <label class="label" for="cnpj">CNPJ</label>
+                    <input class="input" id="cnpj" name="cnpj" type="number" required>
+                </div>
+            </div>
 
-        <tr>
-            <td><button type="submit" class="btn btn-primary"><i class="fa fa-plus"></i> Cadastrar</button>
-                <button class="btn btn-primary" href="index.php"><i class="fa fa-plus"></i> Voltar</button></td>
-        </tr>
-    </table>
-</form>
-</html>
+            <div class="field-wrap">
+                <div class="field">
+                    <label class="label" for="estado">Estado</label>
+                    <input class="input" id="estado" name="estado" type="text" required>
+                    <select>
+
+                    </select>
+                </div>
+            </div>
+
+            <div class="field-wrap">
+                <div class="field">
+                    <label class="label" for="cidade">Cidade</label>
+                    <input class="input" id="cidade" name="cidade" type="number" required>
+                    <select>
+
+                    </select>
+                </div>
+            </div>
+
+            <div class="field-wrap">
+                <div class="field">
+                    <label class="label" for="bairro">Bairro</label>
+                    <input class="input" id="bairro" name="bairro" type="number" required>
+                </div>
+            </div>
+
+            <div class="field-wrap">
+                <div class="field">
+                    <label class="label" for="rua">Rua</label>
+                    <input class="input" id="rua" name="estado" type="text" required>
+                </div>
+            </div>
+
+            <div class="field-wrap">
+                <div class="field">
+                    <label class="label" for="numero">Número</label>
+                    <input class="input" id="numero" name="estado" type="text" required>
+                </div>
+            </div>
+
+            <div class="field-wrap">
+                <div class="field">
+                    <label class="label" for="cep">Cep</label>
+                    <input class="input" id="cep" name="cep" type="number" required>
+                </div>
+            </div>
+
+            <div class="field-wrap">
+                <div class="field">
+                    <label class="label" for="email">Email</label>
+                    <input class="input" id="email" name="email" type="text" required>
+                </div>
+            </div>
+
+
+            <div class="field-wrap">
+                <div class="field">
+                    <label class="label" for="telefone">Telefone</label>
+                    <input class="input" id="telefone" name="telefone" type="text" required>
+                </div>
+            </div>
+
+            <div class="frame">
+                <button class="btn" id="cadastro-button" onclick="cadastrarEmpresa()">Cadastrar</button>
+                <a id="voltar-button" href="/" class="btn">
+                    Voltar
+                </a>
+            </div>
+        </form>
+    </section>
+</div>
+<canvas class="background"></canvas>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/particlesjs/2.2.2/particles.min.js"></script>
+<script>
+    var particles = Particles.init({
+	selector: '.background',
+      color: ['#4DCCC6', '#404B69', '#DBEDF3'],
+    connectParticles: true
+    });
+</script>
+<script
+        src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+        crossorigin="anonymous">
+</script>
+<script src="js/cadastro.js"></script>
 </body>
+<footer className="footer mt-auto py-3 bg-dark">
+    <div className="footer container">
+        <p className="text-light">App desenvolvido por <a class="link-github" href="https://github.com/Ana-Epping" target="_blank" rel="noreferrer">Ana Luiza Epping</a>,
+            <a class="link-github" href="https://github.com/BrunaZimmermannTregnago" target="_blank" rel="noreferrer">Bruna Zimmermann Tregnago</a>,
+            <a class="link-github" href="https://github.com/evelynperondi" target="_blank" rel="noreferrer">Évelyn Perondi Filimberti</a> e
+            <a class="link-github" href="https://github.com/isadoragbocalon" target="_blank" rel="noreferrer">Isadora Gambatto Bocalon</a></p>
+        <p className="text-light"><a class="link-unoesc" href="https://www.unoesc.edu.br/" target="_blank" rel="noreferrer"><strong>Ciência da Computação - UNOESC SMO</strong></a><br/>
+    </div>
+</footer>
 </html>

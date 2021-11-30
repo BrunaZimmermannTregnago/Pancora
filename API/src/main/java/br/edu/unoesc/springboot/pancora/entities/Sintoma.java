@@ -10,15 +10,19 @@ import java.io.Serializable;
 })
 @Entity(name = "Sintoma")
 @NoArgsConstructor
-@AllArgsConstructor
-@ToString
+@EqualsAndHashCode
+@Getter
 public class Sintoma implements Serializable {
     private static final long serialVersionUID = 2207964645489628432L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "sinid", nullable = false)
-    @Getter private Integer id;
+    private Integer id;
 
     @Column(name = "sindes", nullable = false, length = 80)
-    @Getter @Setter private String descricao;
+    @Setter private String descricao;
+
+    public Sintoma(String descricao) {
+        this.descricao = descricao;
+    }
 }
