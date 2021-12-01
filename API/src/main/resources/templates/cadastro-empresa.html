@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Cadastro de empresa</title>
-    <link rel="stylesheet" href="css/cadastro_style.css">
+    <link rel="stylesheet" href="/css/cadastro_style.css">
 </head>
 <header>
     <nav class="navbar">
@@ -43,15 +43,15 @@
 
             <div class="field-wrap">
                 <div class="field">
-                    <label class="label" for="razao-social">Razão Social</label>
-                    <input class="input" id="razao-social" name="razaoSocial" type="text" required>
+                    <label class="label" for="razaoSocial">Razão Social</label>
+                    <input class="input" id="razaoSocial" name="razaoSocial" type="text" required>
                 </div>
             </div>
 
             <div class="field-wrap">
                 <div class="field">
-                    <label class="label" for="nome-fantasia">Nome fantasia</label>
-                    <input class="input" id="nome-fantasia" name="nomeFantasia" type="text" required>
+                    <label class="label" for="nomeFantasia">Nome fantasia</label>
+                    <input class="input" id="nomeFantasia" name="nomeFantasia" type="text" required>
                 </div>
             </div>
 
@@ -99,14 +99,14 @@
             <div class="field-wrap">
                 <div class="field">
                     <label class="label" for="rua">Rua</label>
-                    <input class="input" id="rua" name="estado" type="text" required>
+                    <input class="input" id="rua" name="rua" type="text" required>
                 </div>
             </div>
 
             <div class="field-wrap">
                 <div class="field">
                     <label class="label" for="numero">Número</label>
-                    <input class="input" id="numero" name="estado" type="text" required>
+                    <input class="input" id="numero" name="numero" type="text" required>
                 </div>
             </div>
 
@@ -155,7 +155,72 @@
         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
         crossorigin="anonymous">
 </script>
-<script src="js/cadastro.js"></script>
+<script>
+    var particles = Particles.init({
+	selector: '.background',
+  color: ['#4DCCC6', '#404B69', '#DBEDF3'],
+  connectParticles: true
+});
+
+
+const hamburger = document.querySelector(".hamburger");
+const navMenu = document.querySelector(".nav-menu");
+
+hamburger.addEventListener("click", mobileMenu);
+
+function mobileMenu() {
+    hamburger.classList.toggle("active");
+    navMenu.classList.toggle("active");
+}
+
+const navLink = document.querySelectorAll(".nav-link");
+
+navLink.forEach(n => n.addEventListener("click", closeMenu));
+
+function closeMenu() {
+    hamburger.classList.remove("active");
+    navMenu.classList.remove("active");
+}
+
+function cadastrarEmpresa(){
+    var razaoSocial = $("#razaoSocial").val();
+    var nomeFantasia = $("#nomeFantasia").val();
+    var ramo = $("#ramo").val();
+    var cnpj = $("#cnpj").val();
+    var cidade = $("#cidade").val();
+//    var estado = $("#estado").val();
+    var rua = $("#rua").val();
+    var numero = $("#numero").val();
+    var email = $("#email").val();
+    var telefone = $("#telefone").val();
+    var cep = $("#cep").val();
+    var bairro = $("#bairro").val();
+
+    $.ajax({
+               method : "POST",
+               url : "/cadastro-empresa",
+               data : JSON.stringify({cnpj : cnpj,
+                                      razaoSocial : razaoSocial,
+                                      nomeFantasia : nomeFantasia,
+                                      telefone : telefone,
+                                      email : email,
+                                      ramoAtividade : ramo,
+                                      ruaEndereco : rua,
+                                      numeroEndereco : numero,
+                                      cep : cep,
+                                      bairroId : bairro,
+                                      cidadeId : cidade}),
+               contentType : "application/json; charset=utf-8",
+               success : function(response){
+                   $("#nomeFantasia").val(response.id);
+                   alert("Cadastro realizado com sucesso!");
+               },
+			   error: function(xhr, status, errorThrown){
+                   alert("Erro ao cadastrar." + xhr.responseText);
+               }
+           });
+}
+</script>
 </body>
 <footer className="footer mt-auto py-3 bg-dark">
     <div className="footer container">

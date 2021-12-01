@@ -1,6 +1,9 @@
 package br.edu.unoesc.springboot.pancora.controllers;
 
+import br.edu.unoesc.springboot.pancora.dto.EmpresaDTO;
 import br.edu.unoesc.springboot.pancora.entities.Empresa;
+import br.edu.unoesc.springboot.pancora.repository.BairroRepository;
+import br.edu.unoesc.springboot.pancora.repository.CidadeRepository;
 import br.edu.unoesc.springboot.pancora.repository.EmpresaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -15,11 +18,15 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class CadastroController {
 
     @Autowired
-    private final EmpresaRepository empresaRepository;
+    private EmpresaRepository empresaRepository;
+    @Autowired
+    private BairroRepository bairroRepository;
+    @Autowired
+    private CidadeRepository cidadeRepository;
 
-    public CadastroController(EmpresaRepository empresaRepository) {
-        this.empresaRepository = empresaRepository;
-    }
+//    public CadastroController(EmpresaRepository empresaRepository) {
+//        this.empresaRepository = empresaRepository;
+//    }
 
 
     @GetMapping("/cadastro-paciente")
@@ -34,9 +41,13 @@ public class CadastroController {
 
     @PostMapping("/cadastro-empresa")
     @ResponseBody
-    public ResponseEntity<Empresa> cadastraEmpresa(@RequestBody Empresa empresa){
-        Empresa empresaSalva = empresaRepository.save(empresa);
-        return new ResponseEntity<Empresa>(empresaSalva, HttpStatus.CREATED);
+    public ResponseEntity<Empresa> cadastraEmpresa(@RequestBody EmpresaDTO empresaDTO){
+        Empresa empresa = empresaDTO.getEmpresa();
+        empresa.setBairroId(bairroRepository.findById(empresaDTO.getBairroId()).get());
+        empresa.setCidadeId(cidadeRepository.findById(empresaDTO.getCidadeId()).get());
+
+        empresaRepository.save(empresa);
+        return new ResponseEntity<Empresa>(empresa, HttpStatus.CREATED);
     }
 
     @GetMapping("cadastro-sintomas")

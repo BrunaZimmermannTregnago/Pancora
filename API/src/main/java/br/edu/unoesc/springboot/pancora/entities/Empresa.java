@@ -6,6 +6,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.math.BigDecimal;
 
+//@JsonIgnoreProperties({"hibernateLazyInitializer"})
 @Table(name = "empresa")
 @Entity(name = "Empresa")
 @NoArgsConstructor
@@ -16,7 +17,7 @@ public class Empresa implements Serializable {
     private static final long serialVersionUID = 7595634282930721716L;
     @Id
     @Column(name = "empcnpj", nullable = false, precision = 14)
-    private BigDecimal cnpj;
+    @Setter private BigDecimal cnpj;
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "cidid", nullable = false)
