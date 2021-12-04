@@ -39,7 +39,7 @@
     <h1>Cadastro de Paciente</h1>
 
     <section class="form-section">
-        <form class="form">
+        <form class="form" onsubmit="return false">
 
             <h2 class="form-section-heading">Informações pessoais</h2>
 
@@ -66,8 +66,15 @@
 
             <div class="field-wrap">
                 <div class="field">
-                    <label class="label" for="data-nascimento">Data de nascimento</label>
-                    <input class="input" id="data-nascimento" name="data-nascimento" type="date" required>
+                    <label class="label" for="email">Email</label>
+                    <input class="input" id="email" name="email" type="text" required>
+                </div>
+            </div>
+
+            <div class="field-wrap">
+                <div class="field">
+                    <label class="label" for="datanascimento">Data de nascimento</label>
+                    <input class="input" id="datanascimento" name="datanascimento" type="date" required>
                 </div>
             </div>
 
@@ -81,7 +88,14 @@
             <div class="field-wrap">
                 <div class="field">
                     <label class="label" for="altura">Altura</label>
-                    <input class="input" id="altura" name="altura" type="number" required>
+                    <input class="input" id="altura" name="altura" type="number" step="0.01" min="0" max="3.00" required>
+                </div>
+            </div>
+
+            <div class="field-wrap">
+                <div class="field">
+                    <label class="label" for="sexo">Sexo</label>
+                    <input class="input" id="sexo" name="sexo" type="text" required>
                 </div>
             </div>
 
@@ -136,8 +150,8 @@
             </div>
 
             <div class="frame">
-                <button type="submit"  class="btn" id="cadastro-button" onclick="cadastrarUsuario()">Cadastrar</button>
-                <a id="voltar-button" href="/" class="btn">
+                <button type="button" class="btn" id="cadastro-button" onclick="cadastrarPaciente()">Cadastrar</button>
+                <a id="voltar-button" href="/index" class="btn">
                     Voltar
                 </a>
             </div>
@@ -158,7 +172,70 @@
         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
         crossorigin="anonymous">
 </script>
-<script src="js/cadastro.js"></script>
+<script>
+const hamburger = document.querySelector(".hamburger");
+const navMenu = document.querySelector(".nav-menu");
+
+hamburger.addEventListener("click", mobileMenu);
+
+function mobileMenu() {
+    hamburger.classList.toggle("active");
+    navMenu.classList.toggle("active");
+}
+
+const navLink = document.querySelectorAll(".nav-link");
+
+navLink.forEach(n => n.addEventListener("click", closeMenu));
+
+function closeMenu() {
+    hamburger.classList.remove("active");
+    navMenu.classList.remove("active");
+}
+
+function cadastrarPaciente(){
+    var cpf = $("#cpf").val();
+    var nome = $("#nome").val();
+    var telefone = $("#telefone").val();
+    var email = $("#email").val();
+    var dataNascimento = $("#datanascimento").val();
+    var peso = $("#peso").val();
+    var altura = $("#altura").val();
+    var rua = $("#rua").val();
+    var numero = $("#numero").val();
+    var cep = $("#cep").val();
+    var bairroId = $("#bairro").val();
+    var cidadeId = $("#cidade").val();
+    var tipoUsuario = 1;
+    var sexo = $("#sexo").val();
+
+    $.ajax({
+               method : "POST",
+               url : "/cadastro-paciente",
+               data : JSON.stringify({cpf : cpf,
+                                      nome : nome,
+                                      telefone : telefone,
+                                      email : email,
+                                      dataNascimento: dataNascimento,
+                                      peso : peso,
+                                      altura : altura,
+                                      ruaEndereco : rua,
+                                      numeroEndereco: numero,
+                                      cep : cep,
+                                      bairroId : bairroId,
+                                      cidadeId : cidadeId,
+                                      tipoUsuarioId : tipoUsuario,
+                                      sexo : sexo}),
+               contentType : "application/json; charset=utf-8",
+               success : function(response){
+                   $("#nome").val(response.id);
+                   alert("Cadastro realizado com sucesso!");
+               },
+			   error: function(xhr, status, errorThrown){
+                   alert("Erro ao cadastrar." + xhr.responseText);
+               }
+           });
+}
+</script>
 </body>
 <footer className="footer mt-auto py-3 bg-dark">
     <div className="footer container">

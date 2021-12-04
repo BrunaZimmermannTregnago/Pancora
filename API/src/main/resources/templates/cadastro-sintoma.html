@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Cadastro de sintoma</title>
     <link rel="stylesheet" href="css/cadastro_style.css">
-    <link rel="stylesheet" href="css/cadastro-sintomas.css">
+    <link rel="stylesheet" href="css/cadastro_sintomas.css">
 </head>
 <header>
     <nav class="navbar">
@@ -40,11 +40,11 @@
     <h1>Cadastro de Sintomas</h1>
 
     <section class="form-section">
-        <form class="form">
+        <form class="form" onsubmit="return false">
             <div class="field">
-                <label class="label" for="sintoma">Sintoma</label>
-                <select class="input" id="sintoma" name="sintoma">
-                    <option value="1">Clique para selecionar</option>
+                <label class="label" for="sintomaid">Sintoma</label>
+                <select class="input" id="sintomaid" name="sintomaid">
+                    <option value="">Clique para selecionar</option>
                     <option value="1">Febre</option>
                     <option value="2">Espirros e Secreção Nasal</option>
                     <option value="3">Tosse Seca</option>
@@ -57,10 +57,39 @@
                     <option value="10">Outros sintomas</option>
                     <option value="11">Oximetria ou Saturação de oxigênio por Oxímetro Menor de 80</option>
                 </select>
+
+                <div class="field-wrap">
+                    <div class="field">
+                        <label class="label" for="cpf">CPF</label>
+                        <input class="input" id="cpf" name="cpf" type="number" required>
+                    </div>
+                </div>
+
+                <div class="field-wrap">
+                    <div class="field">
+                        <label class="label" for="grauintensidade">Grau de Intensidade</label>
+                        <input class="input" id="grauintensidade" name="grauintensidade" type="text" required>
+                    </div>
+                </div>
+
+                <div class="field-wrap">
+                    <div class="field">
+                        <label class="label" for="datainicio">Data de início dos sintomas</label>
+                        <input class="input" id="datainicio" name="datainicio" type="date" required>
+                    </div>
+                </div>
+
+                <div class="field-wrap">
+                    <div class="field">
+                        <label class="label" for="datafinal">Data final dos sintomas</label>
+                        <input class="input" id="datafinal" name="datafinal" type="date">
+                    </div>
+                </div>
+
             </div>
             <div class="frame">
-                <button class="btn" id="cadastro-button" onclick="cadastrarSintoma()">Cadastrar</button>
-                <a id="voltar-button" href="/" class="btn">
+                <button type="button" class="btn" id="cadastro-button" onclick="cadastrarSintoma()">Cadastrar</button>
+                <a id="voltar-button" href="/index" class="btn">
                     Voltar
                 </a>
             </div>
@@ -82,12 +111,49 @@
         crossorigin="anonymous">
 </script>
 <script>
-    function cadastrarSintoma() {
-    var resposta = confirm("Deseja salvar o registro?");
+const hamburger = document.querySelector(".hamburger");
+const navMenu = document.querySelector(".nav-menu");
 
-    if (resposta === true) {
+hamburger.addEventListener("click", mobileMenu);
 
-    }
+function mobileMenu() {
+    hamburger.classList.toggle("active");
+    navMenu.classList.toggle("active");
+}
+
+const navLink = document.querySelectorAll(".nav-link");
+
+navLink.forEach(n => n.addEventListener("click", closeMenu));
+
+function closeMenu() {
+    hamburger.classList.remove("active");
+    navMenu.classList.remove("active");
+}
+
+function cadastrarSintoma(){
+    var sintomaId = $("#sintomaid").val();
+    var cpf = $("#cpf").val();
+    var grauIntesidade = $("#grauintensidade").val();
+    var dataInicio = $("#datainicio").val();
+    var dataFinal = $("#datafinal").val();
+
+    $.ajax({
+               method : "POST",
+               url : "/cadastro-sintoma",
+               data : JSON.stringify({dataInicio : dataInicio,
+                                    grauIntesidade : grauIntesidade,
+                                    dataFinal : dataFinal,
+                                    cpf : cpf,
+                                    sintomaId : sintomaId}),
+               contentType : "application/json; charset=utf-8",
+               success : function(response){
+                   $("#sintomaId").val(response.id);
+                   alert("Cadastro realizado com sucesso!");
+               },
+			   error: function(xhr, status, errorThrown){
+                   alert("Erro ao cadastrar." + xhr.responseText);
+               }
+           });
 }
 </script>
 </body>
