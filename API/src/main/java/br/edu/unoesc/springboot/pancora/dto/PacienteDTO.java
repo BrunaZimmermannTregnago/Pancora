@@ -19,7 +19,7 @@ public class PacienteDTO implements Serializable {
 
     private String sexo;
 
-    private Integer tipoUsuarioId;
+    private Long usuario;
 
     private Integer cidadeId;
 
@@ -37,8 +37,6 @@ public class PacienteDTO implements Serializable {
 
     private LocalDate dataNascimento;
 
-    private String email;
-
     private String telefone;
 
     private String nome;
@@ -49,7 +47,6 @@ public class PacienteDTO implements Serializable {
         paciente.setCpf(this.cpf);
         paciente.setNome(this.nome);
         paciente.setTelefone(this.telefone);
-        paciente.setEmail(this.email);
         paciente.setDataNascimento(this.dataNascimento);
         paciente.setPeso(this.peso);
         paciente.setAltura(this.altura);

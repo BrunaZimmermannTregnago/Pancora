@@ -12,11 +12,11 @@
     <div class="container">
         <h1>Pancora</h1>
         <h3>Cadastro</h3>
-        <form class="form">
+        <form class="form" onsubmit="return false">
             <input type="text" id="username" name="username" placeholder="Username">
             <input type="text" id="email" name="email" placeholder="Email">
             <input type="password" id="password" name="password" placeholder="Senha">
-            <button type="submit" id="login-button" onclick="cadastrarUsuario()">Cadastrar-se</button>
+            <button type="button" class="btn" id="login-button" onclick="cadastrarUsuario()">Cadastrar-se</button>
         </form>
         <p >Já possui cadastro? <a href="/login" style="text-decoration:none" ><font class="login" color="white">Login</font></a> </p>
     </div>
@@ -34,9 +34,8 @@
         <li></li>
     </ul>
 </div>
-
 <script>
-    function cadastrarUsuario(){
+function cadastrarUsuario(){
     var username = $("#username").val();
     var email = $("#email").val();
     var password = $("#password").val();
@@ -55,27 +54,22 @@
         return;
     }else{
         $.ajax({
-            method : "POST",
-            url : "registration",
-            data : JSON.stringify({username : username, email : email, password : password}),
-            contentType : "application/json; charset=utf-8",
-            success : function(response){
-                $("#username").val(response.id);
-                alert("Obrigado por se cadastrar! Valide sua conta através do link de confirmação que enviamos para o seu email.");
-            }
-            }).fail(function (xhr, status, errorThrown){
-                alert("Erro ao cadastrar." + xhr.responseText);
-            });
-        }
+             method : "POST",
+             url : "/registration",
+             data : JSON.stringify({username : username,
+                                    email : email,
+                                    password : password}),
+             contentType : "application/json; charset=utf-8",
+             success : function(response){
+                 $("#username").val(response.id);
+                 alert("Obrigado por se cadastrar! Valide sua conta através do link de confirmação que enviamos para o seu email.");
+             },
+             error : function(xhr, status, errorThrown){
+                 alert("Erro ao cadastrar." + xhr.responseText);
+             }
+        });
     }
-
-     $("#login-button").click(function(event){
-             event.preventDefault();
-
-         $('form').fadeOut(500);
-         $('.wrapper').addClass('form-success');
-    });
-
+ }
 </script>
 <script
         src="https://code.jquery.com/jquery-3.6.0.min.js"

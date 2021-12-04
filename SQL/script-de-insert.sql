@@ -5842,3 +5842,44 @@ update situacao_paciente set sitpacdatini = ('2020-08-25')
 where sitpacid in (2,9,11,12,13,14);
 update situacao_paciente set sitpacdatini = ('2020-10-03')
 where sitpacid in (10,4,6,8,15,15);
+
+-- app_user
+insert into app_user(id, app_user_role, email, enabled, "locked", "password", username) values
+(1, 'USER', 'biancatreviso@gmail.com', true, false, '$2a$10$3MNG4zGtrjaR7xbjov9MjOfr0sz76RfY/Y76OA48719ELatP3/Ma.', 'Bianca'),
+(2, 'USER', 'juliamagrao@gmail.com', true, false, '$2a$10$endQc8Y.m6YACR8d11qRW.hOPigNBddlIPfDHENyOFkEtu0DUVVJu', 'Julia'),
+(3, 'USER', 'brunapittol@gmail.com', true, false, '$2a$10$qGA2nVn/8q2P/F0q/z.Zq.SxgLYFwrTBKQS21ZN9cMqOHNCW2rTwS', 'Bruna'),
+(4, 'USER', 'edivalsomarte@gmail.com', true, false, '$2a$10$SCFkuLqLP3e0g.o/H/MNLua91jH3xyJdgStLYMoo7zZTCAsARtvxq', 'Edivalso'),
+(5, 'USER', 'edsonleve@gmail.com', true, false, '$2a$10$sVt2ye2xtoqBM0K6hPcim.lJ.8VLpl4Zs4kRfQL4zOQdKm5yJIFLq', 'Edson'),
+(6, 'USER', 'josesilva@gmail.com', true, false, '$2a$10$BBW0L8JCEOtYAh62LckB9eF1Hca94I3ZWAuhDPMKGSYiaVXAn/stm', 'José'),
+(7, 'USER', 'joaopedro@gmail.com', true, false, '$2a$10$RQrZhh6XGq7GCVP2IfJqLOxMBhmVW9WO54HjJ4tXHP5Hu1sLne3Em', 'João'),
+(8, 'USER', 'vitorpereira@gmail.com', true, false, '$2a$10$vzU/PKcyuuy1osJI7gI3fehfhgGjuPPKFw8CNiP3sLSq73QCQT3XG', 'Vitor'),
+(9, 'USER', 'paulomartini@gmail.com', true, false, '$2a$10$oHnhRkgas3SPi97g1ebzCednmVwaijpl1TAhZzPgz5GuqhIjdiqFS', 'Paulo'),
+(10, 'USER', 'alinesouza@gmail.com', true, false, '2a$10$vzGE9caqmL1YZmxN5I3cheC1jbVhui/AAXDlKi1IgoyFlbdSLUh9a', 'Aline'),
+(11, 'USER', 'vanuzasousa@gmail.com', true, false, '$2a$10$j7Zf76exrEf8PRD5elue1.gybamRds73XeA3tZ4HzRzWizefahGW.', 'Vanusa'),
+(12, 'USER', 'eduardamarcon@gmail.com', true, false, '$2a$10$Fia.MlXNuNFfgf8ZS/uP7.bMl6mhrK3UMxWuHptPpNhKwd8LaZiOm', 'Eduarda'),
+(13, 'USER', 'gabrielabonno@gmail.com', true, false, '$2a$10$SDoKNniUNv2HUeIZOp.4uuhhGHokTMZOUKfvPILO56rf5U.hDMDJm', 'Gabriela'),
+(14, 'USER', 'josuevipi@gmail.com', true, false, '$2a$10$cp7rU6dgYKVnLNolHAbyHeOZMJ0PYRzVNE48MYLip8lAkcLT0tkMe', 'Josué'),
+(15, 'USER', 'anasolar@gmail.com', true, false, '$2a$10$tgpuiQr8gbGHYzifNakh9uqQJzK5IR4WSlSAcKSF9VlnG7U0XWzO.', 'Ana Solar'),
+(16, 'USER', 'josivaldosoares@gmail.com', true, false, '$2a$10$5a7gP4C/ty9gBkF0xYo9J.kw21XDBnaxcc.C/ZSV06x9ZBZt.Sbve', 'Fulado'),
+(17, 'USER', 'aberladojose@gmail.com', true, false, '$2a$10$IW39esUTYQ2JsE5Pk642hOSDBYx8tLmrPZErXvRdtX6hQm5iSZIFe', 'Aberlardo'),
+(18, 'USER', 'a_senhorinha@gmail.com', true, false, '$2a$10$htdJXbIj5fZk4kZWox6bKe1P32kIKh8C/ZBX3YksJYbblL9lwWBHW', 'Senhorinha');
+
+-- Coluna usuario (paciente)
+update paciente set usuario = (7) where paccpf = '35745065425';
+update paciente set usuario = (8) where paccpf = '18094506545';
+update paciente set usuario = (9) where paccpf = '10745065589';
+update paciente set usuario = (10) where paccpf = '15825065425';
+update paciente set usuario = (11) where paccpf = '65149681425';
+update paciente set usuario = (12) where paccpf = '65165115685';
+update paciente set usuario = (13) where paccpf = '61265156983';
+update paciente set usuario = (14) where paccpf = '99854894553';
+update paciente set usuario = (15) where paccpf = '98489526533';
+update paciente set usuario = (1) where paccpf = '89545388938';
+update paciente set usuario = (2) where paccpf = '89756522145';
+update paciente set usuario = (3) where paccpf = '59687412314';
+update paciente set usuario = (4) where paccpf = '10785692216';
+update paciente set usuario = (5) where paccpf = '98712668988';
+update paciente set usuario = (6) where paccpf = '51488148954';
+update paciente set usuario = (16) where paccpf = '70745065565';
+update paciente set usuario = (17) where paccpf = '10745065425';
+update paciente set usuario = (18) where paccpf = '5623149851';

@@ -1,5 +1,6 @@
 package br.edu.unoesc.springboot.pancora.entities;
 
+import br.edu.unoesc.springboot.pancora.appuser.AppUser;
 import lombok.*;
 
 import javax.persistence.*;
@@ -21,12 +22,12 @@ public class Paciente implements Serializable {
     @Column(name = "paccpf", nullable = false, precision = 11)
     private BigDecimal cpf;
 
+    @OneToOne
+    @JoinColumn(name = "usuario", nullable = false)
+    private AppUser usuario;
+
     @Column(name = "pacsex", nullable = false, length = 1)
     private String sexo;
-
-    @ManyToOne(optional = false)
-    @JoinColumn(name = "tipusuid", nullable = false)
-    private TipoUsuario tipoUsuarioId;
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "cidid", nullable = false)
@@ -53,9 +54,6 @@ public class Paciente implements Serializable {
 
     @Column(name = "pacdatnas", nullable = false)
     private LocalDate dataNascimento;
-
-    @Column(name = "pacema", nullable = false, length = 60)
-    private String email;
 
     @Column(name = "pactel", nullable = false, length = 15)
     private String telefone;

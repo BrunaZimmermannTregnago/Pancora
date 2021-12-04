@@ -33,3 +33,6 @@ DROP TABLE IF EXISTS Tipo_Usuario CASCADE;
 DROP TABLE IF EXISTS Unidade_Federativa CASCADE;
 DROP TABLE IF EXISTS Vacina CASCADE;
 DROP TABLE IF EXISTS Vacina_Paciente CASCADE;
+
+alter table paciente drop column tipusuid;
+alter table paciente drop column pacema;

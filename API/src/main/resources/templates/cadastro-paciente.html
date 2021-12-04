@@ -66,13 +66,6 @@
 
             <div class="field-wrap">
                 <div class="field">
-                    <label class="label" for="email">Email</label>
-                    <input class="input" id="email" name="email" type="text" required>
-                </div>
-            </div>
-
-            <div class="field-wrap">
-                <div class="field">
                     <label class="label" for="datanascimento">Data de nascimento</label>
                     <input class="input" id="datanascimento" name="datanascimento" type="date" required>
                 </div>
@@ -196,7 +189,6 @@ function cadastrarPaciente(){
     var cpf = $("#cpf").val();
     var nome = $("#nome").val();
     var telefone = $("#telefone").val();
-    var email = $("#email").val();
     var dataNascimento = $("#datanascimento").val();
     var peso = $("#peso").val();
     var altura = $("#altura").val();
@@ -205,7 +197,6 @@ function cadastrarPaciente(){
     var cep = $("#cep").val();
     var bairroId = $("#bairro").val();
     var cidadeId = $("#cidade").val();
-    var tipoUsuario = 1;
     var sexo = $("#sexo").val();
 
     $.ajax({
@@ -214,7 +205,6 @@ function cadastrarPaciente(){
                data : JSON.stringify({cpf : cpf,
                                       nome : nome,
                                       telefone : telefone,
-                                      email : email,
                                       dataNascimento: dataNascimento,
                                       peso : peso,
                                       altura : altura,
@@ -223,7 +213,6 @@ function cadastrarPaciente(){
                                       cep : cep,
                                       bairroId : bairroId,
                                       cidadeId : cidadeId,
-                                      tipoUsuarioId : tipoUsuario,
                                       sexo : sexo}),
                contentType : "application/json; charset=utf-8",
                success : function(response){
