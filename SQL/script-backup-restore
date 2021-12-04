@@ -23,3 +23,6 @@ ctrl+o -> enter -> ctrl+x
 Políticas
 * Backup será efetuado todos os dias às 03:00 horas.
 * O restore será executado somente em caso necessário.
+
+*.bak: formato binário compactado
+*.sql: despejo de texto simples
