@@ -1,0 +1,25 @@
+Backup
+pg_dump -U postgres pancora > pancora.bak
+
+Restore
+psql -U postgres PancoraTeste < pancora.bak
+
+
+Agendamento de backup
+
+Criar pasta para backup
+mkdir -p ~/DB/backups
+crontab -e
+0 3 * * * pg_dump -U postgres postgres > ~/DB/backups/pancora.bak
+ctrl+o -> enter -> ctrl+x
+
+Logs
+Criar pasta para logs
+mkdir -p ~/DB/logs
+crontab -e
+0 3 * * * pg_dump -U postgres pancora > ~/DB/backups/pancora.bak 2>> ~/logs/pancora.bak.log
+ctrl+o -> enter -> ctrl+x
+
+Políticas
+* Backup será efetuado todos os dias às 03:00 horas.
+* O restore será executado somente em caso necessário.
