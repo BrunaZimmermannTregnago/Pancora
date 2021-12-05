@@ -1,169 +1,133 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Cadastro de sintoma</title>
-    <link rel="stylesheet" href="css/cadastro_style.css">
-    <link rel="stylesheet" href="css/cadastro_sintomas.css">
-</head>
-<header>
-    <nav class="navbar">
-        <a href="/" class="nav-logo">Pancora</a>
-        <ul class="nav-menu">
-            <li class="nav-item">
-                <a href="/cadastro-paciente" class="nav-link">Cadastro de paciente</a>
-            </li>
-            <li class="nav-item">
-                <a href="/cadastro-empresa" class="nav-link">Cadastro de empresa</a>
-            </li>
-            <li class="nav-item">
-                <a href="/cadastro-sintomas" class="nav-link">Cadastro de sintoma</a>
-            </li>
-            <li class="nav-item">
-                <a href="/lista-pacientes" class="nav-link">Quadro de Pacientes</a>
-            </li>
-            <li class="nav-item">
-                <a href="/usuario" class="nav-link">Usuário</a>
-            </li>
-        </ul>
-        <div class="hamburger">
-            <span class="bar"></span>
-            <span class="bar"></span>
-            <span class="bar"></span>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Cadastro de sintoma</title>
+        <link rel="stylesheet" href="/css/cadastro_style.css">
+        <link rel="stylesheet" href="/css/fixed_footer.css">
+    </head>
+
+    <header>
+        <nav class="navbar">
+            <a href="/" class="nav-logo">Pancora</a>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="/cadastro-paciente" class="nav-link">Cadastro de paciente</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/cadastro-empresa" class="nav-link">Cadastro de empresa</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/cadastro-sintoma" class="nav-link">Cadastro de sintoma</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/lista-pacientes" class="nav-link">Quadro de Pacientes</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/usuario" class="nav-link">Usuário</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/logout" class="nav-link">Sair</a>
+                </li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </nav>
+    </header>
+
+    <body>
+        <div class="container">
+
+            <h1>Cadastro de Sintomas</h1>
+
+            <section class="form-section">
+                <form class="form" onsubmit="return false">
+                    <div class="field-wrap">
+                        <div class="field">
+                            <label class="label" for="sintomaid">Sintoma</label>
+                            <select class="input" id="sintomaid" name="sintomaid">
+                                <option value="">Clique para selecionar</option>
+                                <option value="1">Febre</option>
+                                <option value="2">Espirros e Secreção Nasal</option>
+                                <option value="3">Tosse Seca</option>
+                                <option value="4">Dor no Corpo</option>
+                                <option value="5">Dor de Cabeça</option>
+                                <option value="6">Dor ou Irritação na Garganta</option>
+                                <option value="7">Dificuldade Respiratória</option>
+                                <option value="8">Diarreia</option>
+                                <option value="9">Perda de paladar e/ou olfato</option>
+                                <option value="10">Outros sintomas</option>
+                                <option value="11">Oximetria ou Saturação de oxigênio por Oxímetro Menor de 80</option>
+                            </select>
+                        </div>
+                    </div>
+
+                        <div class="field-wrap">
+                            <div class="field">
+                                <label class="label" for="cpf">CPF</label>
+                                <input class="input" id="cpf" name="cpf" type="number" required>
+                            </div>
+                        </div>
+
+                        <div class="field-wrap">
+                            <div class="field">
+                                <label class="label" for="grauintensidade">Grau de Intensidade</label>
+                                <select class="input" id="grauintensidade" name="grauintensidade" required>
+                                    <option value="">Clique para selecionar</option>
+                                    <option value="P">Pouco</option>
+                                    <option value="M">Moderado</option>
+                                    <option value="C">Constante</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="field-wrap">
+                            <div class="field">
+                                <label class="label" for="datainicio">Data de início dos sintomas</label>
+                                <input class="input" id="datainicio" name="datainicio" type="date" required>
+                            </div>
+                        </div>
+
+                        <div class="field-wrap">
+                            <div class="field">
+                                <label class="label" for="datafinal">Data final dos sintomas</label>
+                                <input class="input" id="datafinal" name="datafinal" type="date">
+                            </div>
+                        </div>
+
+                    <div class="frame">
+                        <button type="button" class="btn" id="cadastro-button" onclick="cadastrarSintoma()">Cadastrar</button>
+                        <a id="voltar-button" href="/index" class="btn">
+                            Voltar
+                        </a>
+                    </div>
+                </form>
+            </section>
         </div>
-    </nav>
-</header>
-<body>
-<div class="container">
+        <canvas class="background"></canvas>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/particlesjs/2.2.2/particles.min.js"></script>
+        </script>
+        <script
+                src="https://code.jquery.com/jquery-3.6.0.min.js"
+                integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+                crossorigin="anonymous">
+        </script>
+        <script src="/js/particlesBackground.js"></script>
+        <script src="/js/navbar.js"></script>
+        <script src="/js/cadastrarSintoma.js"></script>
+    </body>
 
-    <h1>Cadastro de Sintomas</h1>
-
-    <section class="form-section">
-        <form class="form" onsubmit="return false">
-            <div class="field">
-                <label class="label" for="sintomaid">Sintoma</label>
-                <select class="input" id="sintomaid" name="sintomaid">
-                    <option value="">Clique para selecionar</option>
-                    <option value="1">Febre</option>
-                    <option value="2">Espirros e Secreção Nasal</option>
-                    <option value="3">Tosse Seca</option>
-                    <option value="4">Dor no Corpo</option>
-                    <option value="5">Dor de Cabeça</option>
-                    <option value="6">Dor ou Irritação na Garganta</option>
-                    <option value="7">Dificuldade Respiratória</option>
-                    <option value="8">Diarreia</option>
-                    <option value="9">Perda de paladar e/ou olfato</option>
-                    <option value="10">Outros sintomas</option>
-                    <option value="11">Oximetria ou Saturação de oxigênio por Oxímetro Menor de 80</option>
-                </select>
-
-                <div class="field-wrap">
-                    <div class="field">
-                        <label class="label" for="cpf">CPF</label>
-                        <input class="input" id="cpf" name="cpf" type="number" required>
-                    </div>
-                </div>
-
-                <div class="field-wrap">
-                    <div class="field">
-                        <label class="label" for="grauintensidade">Grau de Intensidade</label>
-                        <input class="input" id="grauintensidade" name="grauintensidade" type="text" required>
-                    </div>
-                </div>
-
-                <div class="field-wrap">
-                    <div class="field">
-                        <label class="label" for="datainicio">Data de início dos sintomas</label>
-                        <input class="input" id="datainicio" name="datainicio" type="date" required>
-                    </div>
-                </div>
-
-                <div class="field-wrap">
-                    <div class="field">
-                        <label class="label" for="datafinal">Data final dos sintomas</label>
-                        <input class="input" id="datafinal" name="datafinal" type="date">
-                    </div>
-                </div>
-
-            </div>
-            <div class="frame">
-                <button type="button" class="btn" id="cadastro-button" onclick="cadastrarSintoma()">Cadastrar</button>
-                <a id="voltar-button" href="/index" class="btn">
-                    Voltar
-                </a>
-            </div>
-        </form>
-    </section>
-</div>
-<canvas class="background"></canvas>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/particlesjs/2.2.2/particles.min.js"></script>
-<script>
-    var particles = Particles.init({
-	selector: '.background',
-  color: ['#4DCCC6', '#404B69', '#DBEDF3'],
-  connectParticles: true
-});
-</script>
-<script
-        src="https://code.jquery.com/jquery-3.6.0.min.js"
-        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
-        crossorigin="anonymous">
-</script>
-<script>
-const hamburger = document.querySelector(".hamburger");
-const navMenu = document.querySelector(".nav-menu");
-
-hamburger.addEventListener("click", mobileMenu);
-
-function mobileMenu() {
-    hamburger.classList.toggle("active");
-    navMenu.classList.toggle("active");
-}
-
-const navLink = document.querySelectorAll(".nav-link");
-
-navLink.forEach(n => n.addEventListener("click", closeMenu));
-
-function closeMenu() {
-    hamburger.classList.remove("active");
-    navMenu.classList.remove("active");
-}
-
-function cadastrarSintoma(){
-    var sintomaId = $("#sintomaid").val();
-    var cpf = $("#cpf").val();
-    var grauIntesidade = $("#grauintensidade").val();
-    var dataInicio = $("#datainicio").val();
-    var dataFinal = $("#datafinal").val();
-
-    $.ajax({
-               method : "POST",
-               url : "/cadastro-sintoma",
-               data : JSON.stringify({dataInicio : dataInicio,
-                                    grauIntesidade : grauIntesidade,
-                                    dataFinal : dataFinal,
-                                    cpf : cpf,
-                                    sintomaId : sintomaId}),
-               contentType : "application/json; charset=utf-8",
-               success : function(response){
-                   $("#sintomaId").val(response.id);
-                   alert("Cadastro realizado com sucesso!");
-               },
-			   error: function(xhr, status, errorThrown){
-                   alert("Erro ao cadastrar." + xhr.responseText);
-               }
-           });
-}
-</script>
-</body>
-<footer className="footer mt-auto py-3 bg-dark">
-    <div className="footer container">
-        <p className="text-light">App desenvolvido por <a class="link-github" href="https://github.com/Ana-Epping" target="_blank" rel="noreferrer">Ana Luiza Epping</a>,
-            <a class="link-github" href="https://github.com/BrunaZimmermannTregnago" target="_blank" rel="noreferrer">Bruna Zimmermann Tregnago</a>,
-            <a class="link-github" href="https://github.com/evelynperondi" target="_blank" rel="noreferrer">Évelyn Perondi Filimberti</a> e
-            <a class="link-github" href="https://github.com/isadoragbocalon" target="_blank" rel="noreferrer">Isadora Gambatto Bocalon</a></p>
-        <p className="text-light"><a class="link-unoesc" href="https://www.unoesc.edu.br/" target="_blank" rel="noreferrer"><strong>Ciência da Computação - UNOESC SMO</strong></a><br/>
-    </div>
-</footer>
+    <footer className="footer mt-auto py-3 bg-dark">
+        <div className="footer container">
+            <p className="text-light">App desenvolvido por <a class="link-github" href="https://github.com/Ana-Epping" target="_blank" rel="noreferrer">Ana Luiza Epping</a>,
+                <a class="link-github" href="https://github.com/BrunaZimmermannTregnago" target="_blank" rel="noreferrer">Bruna Zimmermann Tregnago</a>,
+                <a class="link-github" href="https://github.com/evelynperondi" target="_blank" rel="noreferrer">Évelyn Perondi Filimberti</a> e
+                <a class="link-github" href="https://github.com/isadoragbocalon" target="_blank" rel="noreferrer">Isadora Gambatto Bocalon</a></p>
+            <p className="text-light"><a class="link-unoesc" href="https://www.unoesc.edu.br/" target="_blank" rel="noreferrer"><strong>Ciência da Computação - UNOESC SMO</strong></a><br/>
+        </div>
+    </footer>
 </html>

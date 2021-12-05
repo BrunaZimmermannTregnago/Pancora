@@ -4,6 +4,7 @@ import br.edu.unoesc.springboot.pancora.entities.Paciente;
 import br.edu.unoesc.springboot.pancora.repository.PacienteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.http.ResponseEntity;
 
@@ -12,7 +13,7 @@ import java.util.List;
 /**
  * Controller para requisições relacionadas ao paciente
  */
-@RestController
+@Controller
 public class PacienteController {
 
     /**
@@ -20,6 +21,7 @@ public class PacienteController {
      */
     @Autowired // injeção de dependência
     private PacienteRepository pacienteRepository;
+
     @RequestMapping(value = "/lista-pacientes", method = RequestMethod.GET)
     @ResponseStatus(HttpStatus.OK)
     @ResponseBody
@@ -31,5 +33,13 @@ public class PacienteController {
             System.out.println("Não há dados.");
             return null;
         }
+    }
+
+    /**
+     * Mapeia e retorna a página do usuário
+     */
+    @GetMapping("/usuario")
+    public String usuario() {
+        return "usuario";
     }
 }

@@ -35,7 +35,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .csrf().disable()
                 .authorizeRequests()
                     .antMatchers("/resources/**").permitAll()
-                //    .antMatchers("/resources/**").permitAll().anyRequest().permitAll()
                     .antMatchers("/registration/**")
                     .permitAll()
                 .anyRequest()
@@ -43,7 +42,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .formLogin()
                     .loginPage("/login")
                     .permitAll()
-                    .failureUrl("/login-error")
+                    .failureUrl("/login")
                     .and()
                     .logout()
                     .logoutSuccessUrl("/index");
