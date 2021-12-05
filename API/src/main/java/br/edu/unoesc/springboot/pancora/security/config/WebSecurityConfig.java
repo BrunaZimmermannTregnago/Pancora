@@ -12,6 +12,11 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
+/**
+ * Classe de configuração de segurança web<br>
+ * Esta classe foi construída e adaptada com base no projeto login-registration-backend de amigoscode
+ * @see <a href="https://github.com/amigoscode/login-registration-backend">login-registration-backend</a>
+ */
 @Configuration
 @AllArgsConstructor
 @EnableWebSecurity
@@ -20,6 +25,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     private final AppUserService appUserService;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
+    /**
+     * Configura permissões de solicitação de página em nível de recurso
+     * @param http objeto de HttpSecurity
+     */
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
@@ -40,11 +49,21 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                     .logoutSuccessUrl("/index");
     }
 
+    /**
+     * Estabelece o mecanismo de autenticação de acordo com o provedor de autenticação configurado
+     * @param auth objeto de AuthenticationManagerBuilder
+     * @throws Exception
+     */
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.authenticationProvider(daoAuthenticationProvider());
     }
 
+    /**
+     * Configura solicitações de páginas cuja autenticação deve ser ignorada
+     * @param web
+     * @throws Exception
+     */
     @Override
     public void configure(WebSecurity web) throws Exception {
         web
@@ -52,6 +71,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/resources/**", "/static/**", "/css/**", "/js/**");
     }
 
+    /**
+     * Configura o provedor de autenticação com o método de cripotografia e classe de serviços do usuário que estão sendo utilizadas
+     * @return provedor configurado
+     */
     @Bean
     public DaoAuthenticationProvider daoAuthenticationProvider() {
         DaoAuthenticationProvider provider =

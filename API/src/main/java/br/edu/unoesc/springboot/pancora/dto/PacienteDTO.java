@@ -7,6 +7,9 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
+/**
+ * Classe DTO para a classe Paciente
+ */
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode
@@ -41,6 +44,10 @@ public class PacienteDTO implements Serializable {
 
     private String nome;
 
+    /**
+     * Método getPaciente para criação de um novo paciente, cujos atributos não setados devem ser complementados posteriormente
+     * @return novo objeto paciente
+     */
     public Paciente getPaciente() {
         Paciente paciente = new Paciente();
 

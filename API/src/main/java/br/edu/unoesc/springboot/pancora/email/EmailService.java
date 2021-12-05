@@ -12,6 +12,11 @@ import org.springframework.stereotype.Service;
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 
+/**
+ * Classe de serviços para envio de email<br>
+ * Esta classe foi construída e adaptada com base no projeto login-registration-backend de amigoscode
+ * @see <a href="https://github.com/amigoscode/login-registration-backend">login-registration-backend</a>
+ */
 @Service
 @AllArgsConstructor
 public class EmailService implements EmailSender {
@@ -21,6 +26,11 @@ public class EmailService implements EmailSender {
     @Autowired
     private final JavaMailSender mailSender;
 
+    /**
+     * Sobreescrita do método send para envio de email
+     * @param to endereço de email
+     * @param email corpo do email
+     */
     @Override
     @Async
     public void send(String to, String email) {
@@ -30,7 +40,7 @@ public class EmailService implements EmailSender {
             helper.setText(email, true);
             helper.setTo(to);
             helper.setSubject("Confirme seu email");
-            helper.setFrom("service@pancora.com");
+            helper.setFrom("pancora2021@gmail.com");
             mailSender.send(mimeMessage);
         }catch (MessagingException e) {
             LOGGER.error("falha ao enviar email", e);

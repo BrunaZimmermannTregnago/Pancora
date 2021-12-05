@@ -1,0 +1,11 @@
+br.edu.unoesc.springboot.pancora
+br.edu.unoesc.springboot.pancora.appuser
+br.edu.unoesc.springboot.pancora.controllers
+br.edu.unoesc.springboot.pancora.dto
+br.edu.unoesc.springboot.pancora.email
+br.edu.unoesc.springboot.pancora.entities
+br.edu.unoesc.springboot.pancora.registration
+br.edu.unoesc.springboot.pancora.registration.token
+br.edu.unoesc.springboot.pancora.repository
+br.edu.unoesc.springboot.pancora.security
+br.edu.unoesc.springboot.pancora.security.config

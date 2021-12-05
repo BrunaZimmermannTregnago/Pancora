@@ -12,6 +12,11 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 
+/**
+ * Classe de serviços para cadastro de novo usuário<br>
+ * Esta classe foi construída e adaptada com base no projeto login-registration-backend de amigoscode
+ * @see <a href="https://github.com/amigoscode/login-registration-backend">login-registration-backend</a>
+ */
 @Service
 @AllArgsConstructor
 public class RegistrationService {
@@ -21,11 +26,25 @@ public class RegistrationService {
     private final ConfirmationTokenService confirmationTokenService;
     private  final EmailSender emailSender;
 
+    /**
+     * Método para cadastro de usuário
+     * @param request objeto DTO RegistrationRequest
+     * @return token de confirmação
+     */
     public String register(RegistrationRequest request) {
+        /**
+         * Verifica se o email informado é válido
+         * @code true se o email for válido,
+         * @code false {@throw exceção com mensagem de email inválido}
+         */
         boolean isValidEmail = emailValidator.test(request.getEmail());
         if (!isValidEmail) {
             throw new IllegalStateException("email inválido");
         }
+        /**
+         * Cria novo objeto AppUser chamando o método signUpUser da classe AppUserService
+         * @link br.edu.unoesc.springboot.pancora.appuser.AppUserService
+         */
         String token = appUserService.signUpUser(
                 new AppUser(
                         request.getUsername(),
@@ -35,12 +54,22 @@ public class RegistrationService {
                 )
         );
 
-    String link = "http://localhost:8000/registration/confirm?token=" + token;
+        String link = "http://localhost:8000/registration/confirm?token=" + token;
+        /**
+         * Chama o método send da classe EmailSender
+         * @param request.getEmail() email do usuário cadastrado
+         * @param buildEmail(request.getUsername, link) corpo do email
+         */
         emailSender.send(request.getEmail(), buildEmail(request.getUsername(), link));
 
         return token;
-}
+    }
 
+    /**
+     * Método para confirmação do token
+     * @param token token
+     * @return mensagem se o email foi confirmado ou se houve algum problema durante a confirmação
+     */
     @Transactional
     public String confirmToken(String token) {
         ConfirmationToken confirmationToken = confirmationTokenService.getToken(token)
@@ -58,11 +87,21 @@ public class RegistrationService {
         }
 
         confirmationTokenService.setConfirmedAt(token);
+
+        /**
+         * Habilita o usuário após a página de confirmação ter sido acessada
+         */
         appUserService.enableAppUser(
                 confirmationToken.getAppUser().getEmail());
         return "confirmado";
     }
 
+    /**
+     * Método para construção do corpo do email
+     * @param name nome do usuário
+     * @param link link URL da página de confirmação de email
+     * @return corpo do email
+     */
     private String buildEmail(String name, String link) {
         return "<div style=\"font-family:Helvetica,Arial,sans-serif;font-size:16px;margin:0;color:#0b0c0c\">\n" +
                 "\n" +

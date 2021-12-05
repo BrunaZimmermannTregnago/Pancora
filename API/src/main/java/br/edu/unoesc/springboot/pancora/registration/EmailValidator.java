@@ -6,14 +6,19 @@ import java.util.function.Predicate;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * Classe responsável por verificar se o email recebido é válido<br>
+ * Esta classe foi construída e complementada com base no projeto login-registration-backend de amigoscode
+ * @see <a href="https://github.com/amigoscode/login-registration-backend">login-registration-backend</a>
+ */
 @Service
 public class EmailValidator implements Predicate<String> {
+
     /**
-     * Evaluates this predicate on the given argument.
-     *
-     * @param email the input argument
-     * @return {@code true} if the input argument matches the predicate,
-     * otherwise {@code false}
+     *Sobreescrita do método test
+     * @param email email a ser verificado
+     * @return {@code true} se o email for válido,
+     * caso contrário, {@code false}
      */
     @Override
     public boolean test(String email) {

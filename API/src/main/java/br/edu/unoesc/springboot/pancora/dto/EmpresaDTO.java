@@ -6,6 +6,9 @@ import lombok.*;
 import java.io.Serializable;
 import java.math.BigDecimal;
 
+/**
+ * Classe DTO para a classe Empresa
+ */
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode
@@ -34,8 +37,13 @@ public class EmpresaDTO implements Serializable {
 
     @Setter private String razaoSocial;
 
+    /**
+     * Método getEmpresa para criação de uma nova empresa, cujos atributos não setados devem ser complementados posteriormente
+     * @return novo objeto empresa
+     */
     public Empresa getEmpresa() {
         Empresa empresa = new Empresa();
+
         empresa.setEmail(this.email);
         empresa.setCep(this.cep);
         empresa.setNomeFantasia(this.nomeFantasia);
@@ -45,6 +53,7 @@ public class EmpresaDTO implements Serializable {
         empresa.setRazaoSocial(this.razaoSocial);
         empresa.setTelefone(this.telefone);
         empresa.setCnpj(this.cnpj);
+
         return empresa;
     }
 }

@@ -10,6 +10,9 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
+/**
+ * Classe DTO para a classe SintomaPaciente
+ */
 @NoArgsConstructor
 @EqualsAndHashCode
 @Getter
@@ -28,6 +31,10 @@ public class SintomaPacienteDTO implements Serializable {
 
     @Setter private LocalDate dataInicio;
 
+    /**
+     * Método getSintomaPaciente para criação de um novo objeto SintomaPaciente, cujos atributos não setados devem ser complementados posteriormente
+     * @return novo objeto paciente
+     */
     public SintomaPaciente getSintomaPaciente() {
         SintomaPaciente sintomaPaciente = new SintomaPaciente();
 
