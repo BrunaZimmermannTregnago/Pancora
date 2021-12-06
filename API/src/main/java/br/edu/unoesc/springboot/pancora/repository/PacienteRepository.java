@@ -11,7 +11,7 @@ public interface PacienteRepository extends JpaRepository<Paciente, BigDecimal> 
 
     @Query(value = "select p from Paciente p")
     List<Paciente> buscar();
-//
+
 //    @Query(value = "select p.cpf from Paciente p where usuario = ?1")
 //    BigDecimal getCpfByUser(Long id);
 }

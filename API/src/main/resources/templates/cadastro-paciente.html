@@ -18,16 +18,13 @@
                     <a href="/cadastro-empresa" class="nav-link">Cadastro de empresa</a>
                 </li>
                 <li class="nav-item">
-                    <a href="/cadastro-sintomas" class="nav-link">Cadastro de sintoma</a>
+                    <a href="/cadastro-sintoma" class="nav-link">Cadastro de sintoma</a>
                 </li>
                 <li class="nav-item">
                     <a href="/lista-paciente" class="nav-link">Quadro de Pacientes</a>
                 </li>
                 <li class="nav-item">
-                    <a href="/usuario" class="nav-link">Usuários</a>
-                </li>
-                <li class="nav-item">
-                    <a href="/registration" class="nav-link">Cadastro de Usuário</a>
+                    <a href="/usuario" class="nav-link">Usuário</a>
                 </li>
                 <li class="nav-item">
                     <a href="/logout" class="nav-link">Sair</a>
@@ -96,7 +93,12 @@
                     <div class="field-wrap">
                         <div class="field">
                             <label class="label" for="sexo">Sexo</label>
-                            <input class="input" id="sexo" name="sexo" type="text" required>
+                            <select class="input" id="sexo" required>
+                                <option value="0">Clique para selecionar</option>
+                                <option value="F">Feminino</option>
+                                <option value="M">Masculino</option>
+                                <option value="O">Outro</option>
+                            </select>
                         </div>
                     </div>
 
@@ -105,9 +107,35 @@
                     <div class="field-wrap">
                         <div class="field">
                             <label class="label" for="estado">Estado</label>
-                            <input class="input" id="estado" name="estado" type="number" required>
-                            <select>
-
+                            <select class="input" id="estado" required>
+                                <option value="0">Clique para selecionar</option>
+                                <option value="1">Acre</option>
+                                <option value="2">Alagoas</option>
+                                <option value="3">Amazonas</option>
+                                <option value="4">Amapá</option>
+                                <option value="5">Bahia</option>
+                                <option value="6">Ceará</option>
+                                <option value="7">Distrito Federal</option>
+                                <option value="8">Espírito Santo</option>
+                                <option value="9">Goiás</option>
+                                <option value="10">Maranhão</option>
+                                <option value="11">Minas Gerais</option>
+                                <option value="12">Mato Grosso do Sul</option>
+                                <option value="13">Mato Grosso</option>
+                                <option value="14">Pará</option>
+                                <option value="15">Paraíba</option>
+                                <option value="16">Pernambuco</option>
+                                <option value="17">Piauí</option>
+                                <option value="18">Paraná</option>
+                                <option value="19">Rio de Janeiro</option>
+                                <option value="20">Rio Grande do Norte</option>
+                                <option value="21">Rondônia</option>
+                                <option value="22">Roraima</option>
+                                <option value="23">Rio Grande do Sul</option>
+                                <option value="24">Santa Catarica</option>
+                                <option value="25">Sergipe</option>
+                                <option value="26">São Paulo</option>
+                                <option value="27">Tocantins</option>
                             </select>
                         </div>
                     </div>
@@ -115,9 +143,18 @@
                     <div class="field-wrap">
                         <div class="field">
                             <label class="label" for="cidade">Cidade</label>
-                            <input class="input" id="cidade" name="cidade" type="number" required>
-                            <select>
-
+                            <select class="input" id="cidade" required>
+                                <option value="0">Clique para selecionar</option>
+                                <option value="1">Afonso Cláudio</option>
+                                <option value="2">Água Doce do Norte</option>
+                                <option value="3">Água Branca</option>
+                                <option value="4">Alegre</option>
+                                <option value="5">Alfredo Chaves</option>
+                                <option value="6">Alto Rio Novo</option>
+                                <option value="7">Anchieta</option>
+                                <option value="8">Apiacá</option>
+                                <option value="9">Aracruz</option>
+                                <option value="10">Atilio Vivacqua</option>
                             </select>
                         </div>
                     </div>
@@ -125,7 +162,18 @@
                     <div class="field-wrap">
                         <div class="field">
                             <label class="label" for="bairro">Bairro</label>
-                            <input class="input" id="bairro" name="bairro" type="number" required>
+                            <select class="input" id="bairro" required>
+                                <option value="0">Clique para selecionar</option>
+                                <option value="1">Agostini</option>
+                                <option value="2">Centro</option>
+                                <option value="3">Salete</option>
+                                <option value="4">Progresso</option>
+                                <option value="5">Estrela</option>
+                                <option value="6">Santa Rita</option>
+                                <option value="7">São Luiz</option>
+                                <option value="8">São Jorge</option>
+                                <option value="9">São Sebastião</option>
+                            </select>
                         </div>
                     </div>
 

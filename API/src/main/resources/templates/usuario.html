@@ -25,10 +25,7 @@
                     <a href="/lista-paciente" class="nav-link">Quadro de Pacientes</a>
                 </li>
                 <li class="nav-item">
-                    <a href="/usuario" class="nav-link">Usuários</a>
-                </li>
-                <li class="nav-item">
-                    <a href="/registration" class="nav-link">Cadastro de Usuário</a>
+                    <a href="/usuario" class="nav-link">Usuário</a>
                 </li>
                 <li class="nav-item">
                     <a href="/logout" class="nav-link">Sair</a>
@@ -42,52 +39,30 @@
         </nav>
     </header>
 
-    <body>
+    <body onload="buscarUsuarios()">
     <div class="container">
-        <h1>Usuários cadastrados</h1>
+        <h1>Usuário</h1>
+        <div class="list-section">
+            <div id="div-busca">
+            </div>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th class="space-list">Username</th>
+                    <th class="space-list">Email</th>
+                </tr>
+                </thead>
+                <tbody id="registros">
 
-        <div id="div-busca" style="text-align: center!important;">
-            <button id="btn-busca" onclick="buscarUsuarios();" style="padding: 8px;background-color: #4dccc6;color: white; border-radius: 4px;border: 1px solid #4dccc6;">Buscar usuários</button>
+                </tbody>
+            </table>
         </div>
-        <table class="table">
-            <thead>
-            <tr>
-                <th class="space-list">Username</th>
-                <th class="space-list">Email</th>
-            </tr>
-            </thead>
-            <tbody id="registros">
-
-            </tbody>
-        </table>
     </div>
 
     <canvas class="background"></canvas>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/particlesjs/2.2.2/particles.min.js"></script>
     <script src="/js/particlesBackground.js"></script>
-    <script>
-        function buscarUsuarios(){
-            var url = "http://localhost:8000/listar-usuario";
-
-            var xhttp = new XMLHttpRequest();
-            xhttp.open("GET", url, false);
-
-            xhttp.send();//A execução do script pára aqui até a requisição retornar do servidor
-
-            var dados = xhttp.responseText;
-            var html = "";
-            JSON.parse(dados).forEach( function (registro){
-                html += '<tr><td class="space-list">'
-                +registro.username
-                +'</td><td class="space-list">'
-                +registro.email
-                +"</td></tr>"
-
-<!--[{"id":1,"username":"ana.epping01@gmail.com","email":"ana.epping01@gmail.com","password":"$2a$10$4qKQCZjPcnl6aDfx096GVuVB69Xh5omLS6JySOJAEwug9dq1pSLzG","appUserRole":"USER","locked":false,"enabled":true,"authorities":[{"authority":"USER"}],"accountNonExpired":true,"accountNonLocked":true,"credentialsNonExpired":true}]           })-->
-           document.getElementById('registros').innerHTML = html;
-        })
-    }
-    </script>
+    <script src="js/buscarUsuario.js"></script>
     </body>
 
     <footer className="footer mt-auto py-3 bg-dark">

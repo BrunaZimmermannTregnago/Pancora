@@ -61,12 +61,4 @@ public class Paciente implements Serializable {
 
     @Column(name = "pacnom", nullable = false, length = 200)
     private String nome;
-
-//    @OneToMany(mappedBy = "cpf", fetch = FetchType.EAGER)
-//    @Getter
-//    List<SintomaPaciente> sintomaPacienteList;
-
-//    @OneToMany(mappedBy = "cpf", fetch = FetchType.EAGER)
-//    @Getter
-//    List<SituacaoPaciente> situacaoPacienteList;
 }

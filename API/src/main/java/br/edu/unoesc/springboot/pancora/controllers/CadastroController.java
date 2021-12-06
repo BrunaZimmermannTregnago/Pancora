@@ -107,9 +107,10 @@ public class CadastroController {
      */
     @PostMapping("/cadastro-sintoma")
     @ResponseBody
-    public ResponseEntity<SintomaPaciente> cadastraSintomaPaciente(@RequestBody SintomaPacienteDTO sintomaPacienteDTO){
+    public ResponseEntity<SintomaPaciente> cadastraSintomaPaciente(@RequestBody SintomaPacienteDTO sintomaPacienteDTO, @AuthenticationPrincipal AppUser appUser){
         SintomaPaciente sintomaPaciente = sintomaPacienteDTO.getSintomaPaciente();
         sintomaPaciente.setCpf(pacienteRepository.findById(sintomaPacienteDTO.getCpf()).get());
+//        sintomaPaciente.setCpf(pacienteRepository.getPacienteByAppUser(appUserRepository.getById(appUser.getId())));
         sintomaPaciente.setSintomaId(sintomaRepository.findById(sintomaPacienteDTO.getSintomaId()).get());
 
         sintomaPacienteRepository.save(sintomaPaciente);

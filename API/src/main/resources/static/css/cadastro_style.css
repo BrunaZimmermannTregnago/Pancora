@@ -45,7 +45,7 @@ body {
   padding:0;
 }
 
-h1 {
+h1, .main-title {
   font-size: 3.2rem;
   line-height: 3.6rem;
   margin-bottom: 2.4rem;
@@ -53,6 +53,10 @@ h1 {
   color: #464646;
   text-align: center;
   display: block;
+}
+
+.main-title {
+    padding: 24px 0 0 0;
 }
 
 .container {
@@ -190,7 +194,7 @@ footer {
 
 /* Form
 ––––––––––––––––––––––––––––––––––––––––––––––*/
-.form-section {
+.form-section, .list-section {
   display: block;
   border: solid 1px #E5E5EA;
   border-radius: 4px;
@@ -198,6 +202,19 @@ footer {
   margin: 0 auto 3.2rem;
   background: #FFF;
   border-bottom: solid 1px #EEE;
+}
+
+.list-section {
+    font-size: 1.4rem;
+    color: #5B5B5B;
+}
+
+.space-list-title {
+    font-size: 1.9rem;
+    padding: 0.9rem;
+    color: #1F1F21;
+    line-height: 2.4rem;
+    font-weight: 500;
 }
 
 .form-section-heading {
