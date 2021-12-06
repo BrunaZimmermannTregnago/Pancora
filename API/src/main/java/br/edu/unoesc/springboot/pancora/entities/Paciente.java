@@ -7,6 +7,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.List;
 
 @Table(name = "paciente")
 @Entity(name = "Paciente")
@@ -60,4 +61,12 @@ public class Paciente implements Serializable {
 
     @Column(name = "pacnom", nullable = false, length = 200)
     private String nome;
+
+//    @OneToMany(mappedBy = "cpf", fetch = FetchType.EAGER)
+//    @Getter
+//    List<SintomaPaciente> sintomaPacienteList;
+
+//    @OneToMany(mappedBy = "cpf", fetch = FetchType.EAGER)
+//    @Getter
+//    List<SituacaoPaciente> situacaoPacienteList;
 }

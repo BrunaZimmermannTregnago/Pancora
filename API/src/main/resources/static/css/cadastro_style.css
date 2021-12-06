@@ -392,3 +392,8 @@ footer {
 .link-github:hover, .link-unoesc:hover {
     color: #FAF9F6;
 }
+.space-list{
+    padding: 5px 10px;
+    width: 30em;
+    text-align: center;
+}

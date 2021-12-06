@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Lista de Pacientes</title>
+    <link rel="stylesheet" href="/css/cadastro_style.css">
+    <link rel="stylesheet" href="/css/fixed_footer.css">
+</head>
+<header>
+    <nav class="navbar">
+        <a href="/" class="nav-logo">Pancora</a>
+        <ul class="nav-menu">
+            <li class="nav-item">
+                <a href="/cadastro-paciente" class="nav-link">Cadastro de paciente</a>
+            </li>
+            <li class="nav-item">
+                <a href="/cadastro-empresa" class="nav-link">Cadastro de empresa</a>
+            </li>
+            <li class="nav-item">
+                <a href="/cadastro-sintoma" class="nav-link">Cadastro de sintoma de paciente</a>
+            </li>
+            <li class="nav-item">
+                <a href="/lista-paciente" class="nav-link">Quadro de Pacientes</a>
+            </li>
+            <li class="nav-item">
+                <a href="/usuario" class="nav-link">Usuários</a>
+            </li>
+            <li class="nav-item">
+                <a href="/registration" class="nav-link">Cadastro de Usuário</a>
+            </li>
+            <li class="nav-item">
+                <a href="/logout" class="nav-link">Sair</a>
+            </li>
+        </ul>
+        <div class="hamburger">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+    </nav>
+</header>
+<body>
+    <div class="container">
+        <h1>Pacientes cadastrados</h1>
+
+        <div id="div-busca" style="text-align: center;">
+            <button id="btn-busca" onclick="buscarPacientes();" style="padding: 8px;background-color: #4dccc6;color: white; border-radius: 4px;border: 1px solid #4dccc6;">Buscar pacientes</button>
+        </div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th class="space-list">Nome</th>
+                    <th class="space-list">Telefone</th>
+                    <th class="space-list">Sexo</th>
+                    <th class="space-list">Endereço</th>
+                    <th class="space-list">Cidade</th>
+                    <th class="space-list">UF</th>
+                </tr>
+            </thead>
+            <tbody id="registros">
+
+            </tbody>
+        </table>
+    </div>
+    <script>
+        function buscarPacientes(){
+
+            var url = "http://localhost:8000/listar-paciente";
+
+            var xhttp = new XMLHttpRequest();
+            xhttp.open("GET", url, false);
+
+            xhttp.send();//A execução do script pára aqui até a requisição retornar do servidor
+
+            var dados = xhttp.responseText;
+            var html = "";
+            JSON.parse(dados).forEach( function (registro){
+                html += '<tr><td class="space-list">'
+                +registro.nome
+                +'</td><td class="space-list">'
+                +registro.telefone
+                +'</td><td class="space-list">'
+                +registro.sexo
+                +'</td><td class="space-list">'
+                +registro.ruaEndereco + ", Nº "+registro.numeroEndereco+" - "+registro.bairroId.nome
+                +'</td><td class="space-list">'
+                +registro.cidadeId.nome
+                +'</td><td class="space-list">'
+                +registro.cidadeId['ufId'].nomeSigla
+                +"</td></tr>"
+
+<!--                [{"cpf":4454718083,"usuario":null,"sexo":"F","cidadeId":{"id":1,"ufId":{"id":1,"nomeSigla":"SC"},"nome":"teste cidade"},"bairroId":{"id":1,"nome":"Teste Bairro"},"cep":89900000,"numeroEndereco":"vfd","ruaEndereco":"T","altura":1.99,"peso":11.10,"dataNascimento":"2021-10-20","telefone":"(49) 99193-7890","nome":"JOSE","sintomaPacienteList":[]}]-->
+           })
+           document.getElementById('registros').innerHTML = html;
+        }
+    </script>
+    <canvas class="background"></canvas>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/particlesjs/2.2.2/particles.min.js"></script>
+    </script>
+    <script
+            src="https://code.jquery.com/jquery-3.6.0.min.js"
+            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+            crossorigin="anonymous">
+    </script>
+    <script src="/js/particlesBackground.js"></script>
+    <script src="/js/navbar.js"></script>
+    <script src="/js/cadastrarSintoma.js"></script>
+</body>
+
+<footer className="footer mt-auto py-3 bg-dark">
+    <div className="footer container">
+        <p className="text-light">App desenvolvido por <a class="link-github" href="https://github.com/Ana-Epping" target="_blank" rel="noreferrer">Ana Luiza Epping</a>,
+            <a class="link-github" href="https://github.com/BrunaZimmermannTregnago" target="_blank" rel="noreferrer">Bruna Zimmermann Tregnago</a>,
+            <a class="link-github" href="https://github.com/evelynperondi" target="_blank" rel="noreferrer">Évelyn Perondi Filimberti</a> e
+            <a class="link-github" href="https://github.com/isadoragbocalon" target="_blank" rel="noreferrer">Isadora Gambatto Bocalon</a></p>
+        <p className="text-light"><a class="link-unoesc" href="https://www.unoesc.edu.br/" target="_blank" rel="noreferrer"><strong>Ciência da Computação - UNOESC SMO</strong></a><br/>
+    </div>
+</footer>
+</html>
