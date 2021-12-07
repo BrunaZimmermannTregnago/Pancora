@@ -67,11 +67,11 @@ h1, .main-title {
 
 .background {
      position: absolute;
-      top: 0;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      z-index: -1;
+     top: 0;
+     bottom: 0;
+     left: 0;
+     right: 0;
+     z-index: -1;
 }
 
 footer {
@@ -84,6 +84,17 @@ footer {
     background: #4DCCC6;
     font-size: 1.3rem;
     font-weight: 300;
+}
+
+.user-profile {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 15px;
+    width: 210px;
+    height: auto;
+    border-radius: 50%;
+    overflow: hidden;
 }
 
 /*NavBar Style

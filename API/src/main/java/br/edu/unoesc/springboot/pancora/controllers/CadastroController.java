@@ -110,10 +110,10 @@ public class CadastroController {
     public ResponseEntity<SintomaPaciente> cadastraSintomaPaciente(@RequestBody SintomaPacienteDTO sintomaPacienteDTO, @AuthenticationPrincipal AppUser appUser){
         SintomaPaciente sintomaPaciente = sintomaPacienteDTO.getSintomaPaciente();
         sintomaPaciente.setCpf(pacienteRepository.findById(sintomaPacienteDTO.getCpf()).get());
-//        sintomaPaciente.setCpf(pacienteRepository.getPacienteByAppUser(appUserRepository.getById(appUser.getId())));
+//        sintomaPaciente.setCpf(pacienteRepository.getPacienteByUser(appUser.getId()));
         sintomaPaciente.setSintomaId(sintomaRepository.findById(sintomaPacienteDTO.getSintomaId()).get());
 
         sintomaPacienteRepository.save(sintomaPaciente);
-        return new ResponseEntity<SintomaPaciente>(sintomaPaciente, HttpStatus.CREATED);
+        return new ResponseEntity<>(sintomaPaciente, HttpStatus.CREATED);
     }
 }

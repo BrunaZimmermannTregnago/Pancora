@@ -1,6 +1,5 @@
 package br.edu.unoesc.springboot.pancora.controllers;
 
-import br.edu.unoesc.springboot.pancora.appuser.AppUser;
 import br.edu.unoesc.springboot.pancora.appuser.AppUserRepository;
 import br.edu.unoesc.springboot.pancora.entities.Paciente;
 import br.edu.unoesc.springboot.pancora.repository.PacienteRepository;
@@ -53,20 +52,5 @@ public class PacienteController {
     @GetMapping("/usuario")
     public String usuario() {
         return "usuario";
-    }
-
-    /**
-     * Mapeia a página de listagem de usuario e retorna a lista, caso exista
-     */
-    @GetMapping(value = "listar-usuario")
-    @ResponseBody
-    public ResponseEntity<List<AppUser>> listarUsuario(){
-        List<AppUser> usuario = appUserRepository.buscar();
-        if(usuario != null){
-            return new ResponseEntity<List<AppUser>>(usuario, HttpStatus.OK);
-        }else{
-            System.out.println("Não há dados.");
-            return null;
-        }
     }
 }
