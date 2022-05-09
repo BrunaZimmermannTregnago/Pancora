@@ -1,2 +1,6 @@
-Pancora
+## Pancora
 
+Técnologias utilizadas:
+* Java
+* Javascript
+* HTML/CSS
